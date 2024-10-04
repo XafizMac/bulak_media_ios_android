@@ -22,8 +22,8 @@ export const Shahada = () => {
               مُحَمَّدًا عَبْدُهُ وَ رَسُولُهُ
             </Text>
             <Text style={styles.rusText}>
-              Ашхаду алля иляха илляллах. Ва ашхаду анна Мухаммадан ‘абдуху ва
-              расулюх.
+              Ашхаду алля илааха иллаллох. Ва ашхаду анна Мухаммадан ‘абдуху ва
+              расулух.
             </Text>
             <Text style={styles.rusText}>
               {lang === "kg"
@@ -46,8 +46,7 @@ const styles = StyleSheet.create({
   container: {
     height: "100%",
     paddingHorizontal: 12,
-    paddingVertical: 12,
-    paddingBottom: 130,
+
   },
   box: {
     display: "flex",

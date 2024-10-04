@@ -26,34 +26,16 @@ import AnNas from "../components/pages/SurScreens/AnNas.jsx";
 import Al_Humaza from "../components/pages/SurScreens/Al_Humaza.jsx";
 import Al_Fil from "../components/pages/SurScreens/Al_Fil.jsx";
 import Kuraysh from "../components/pages/SurScreens/Kuraysh.jsx";
+import { View } from "react-native";
 
 const Stack = createNativeStackNavigator();
 const screens = [
-  { name: "Shahada", title: "ШАХАДА", component: Shahada },
-  { name: "Tasbihat", title: "ТАСБИХАТ", component: Tasbihat },
-  { name: "Sur", title: "СУРЫ", component: Sur },
-  { name: "Prayer", title: "МОЛИТВЫ", component: Prayer },
-  { name: "Javshan", title: "ЖАВШАН", component: Javshan },
-  { name: "Tafrijia", title: "ТАФРИЖИЯ", component: Tafrijia },
   { name: "Fajr", title: "ФАДЖР", component: Fajr },
   { name: "Zuhr", title: "ЗУХР", component: Zuhr },
   { name: "Asr", title: "АСР", component: Asr },
   { name: "Magrib", title: "МАГРИБ", component: Magrib },
   { name: "Isha", title: "ИША", component: Isha },
-  { name: "al-Fatiha", title: "СУРЫ", component: Al_Fatiha },
-  { name: "al-Asr", title: "СУРЫ", component: Al_Asr },
-  { name: "al-Falak", title: "СУРЫ", component: AlFalak },
   { name: "Bab", title: "ЖАВШАН", component: Bab },
-  { name: "anNas", title: "СУРЫ", component: AnNas },
-  { name: "alHumaza", title: "СУРЫ", component: Al_Humaza },
-  { name: "al-Fil", title: "СУРЫ", component: Al_Fil },
-  { name: "Kuraysh", title: "СУРЫ", component: Kuraysh },
-  { name: "al-Maun", title: "СУРЫ", component: Al_Maun },
-  { name: "al-Kavsar", title: "СУРЫ", component: Al_Kavsar },
-  { name: "al-Kafirun", title: "СУРЫ", component: Al_Kafirun },
-  { name: "an-Nasr", title: "СУРЫ", component: Al_Nasr },
-  { name: "al-Masad", title: "СУРЫ", component: Al_Masad },
-  { name: "al-Ihlas", title: "СУРЫ", component: Al_Ihlas },
 ];
 
 function MenuNavigate() {
@@ -74,9 +56,10 @@ function MenuNavigate() {
               headerTitleAlign: "center",
               headerTitleStyle: { color: "white" },
               headerTintColor: "white",
+              headerBackTitleVisible: true
             }}
           />
-        );
+        )
       })}
     </Stack.Navigator>
   );

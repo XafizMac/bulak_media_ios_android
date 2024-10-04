@@ -4,12 +4,50 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Share
 } from "react-native";
 import React, { useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-const Ayah = ({ arabicText, index, meaningText, translation }) => {
+import useStore from "../../../store/store";
+
+const Ayah = ({ arabicText, index, meaningText, translation, info }) => {
   const [saveAyah, setSaveAyah] = useState(false);
+  const addAyat = useStore((state) => state.addAyat);
+
+  const shareAyat = async () => {
+    try {
+      const message =
+        `Сура - ${info.namaLatin}
+Аят - ${index + 1}
+
+${arabicText}
+
+${meaningText}
+
+Скачать приложение Булак Медиа👇
+https://github.com/Xafizmac`;
+
+      const shareOptions = {
+        message,
+      };
+      await Share.share(shareOptions);
+    }
+    catch (err) {
+      console.log(err);
+    }
+  }
+
+  const saveAyat = () => {
+    addAyat();
+  }
+
+  const deleteAyat = async () => {
+    try {
+
+    }
+    catch (e) { }
+  }
 
   return (
     <View style={styles.button}>
@@ -18,16 +56,18 @@ const Ayah = ({ arabicText, index, meaningText, translation }) => {
           <Text style={styles.number}>{index + 1}</Text>
         </View>
         <View style={styles.specificIcons}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => shareAyat()}>
             <AntDesign name="sharealt" size={24} color="#F2BB4A" />
           </TouchableOpacity>
-          <Pressable onPress={() => setSaveAyah(!saveAyah)}>
-            {!saveAyah ? (
+          {!saveAyah ? (
+            <Pressable onPress={() => saveAyat()}>
               <MaterialIcons name="bookmark-border" size={28} color="#F2BB4A" />
-            ) : (
+            </Pressable>
+          ) : (
+            <Pressable onPress={deleteAyat}>
               <MaterialIcons name="bookmark" size={28} color="#F2BB4A" />
-            )}
-          </Pressable>
+            </Pressable>
+          )}
         </View>
       </View>
       <View style={{ flexDirection: "column", gap: 12 }}>

@@ -1,31 +1,40 @@
 import { ActivityIndicator, SafeAreaView, StyleSheet, Text, View } from "react-native";
-import GetPermission from "../../../api/location";
 import { useEffect, useState } from "react";
 import useLocation from "../../../api/location";
 
 export default function MyLocation() {
     const { location, loading } = useLocation();
     const [today, setToday] = useState("");
+    const [currentMonth, setCurrentMonth] = useState("");
     const date = new Date();
     const day = date.getDay();
     const data = date.getDate();
-
+    const month = date.getMonth();
 
     useEffect(() => {
-        undefineDay();
-    }, [day])
+        async function undefineMoments() {
+            undefineDay()
+            undefineMonth();
+        }
+        undefineMoments();
+    }, [day, month])
 
     const undefineDay = () => {
-        const daysOfWeek = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
-        const dayOfWeek = daysOfWeek[day - 1];
+        const daysOfWeek = ["Воскресенье","Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+        const dayOfWeek = daysOfWeek[day];
         setToday(dayOfWeek);
+    }
+    const undefineMonth = () => {
+        const monthsOfYear = ["январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"];
+        const monthOfYear = monthsOfYear[month];
+        setCurrentMonth(monthOfYear);
     }
 
     return (
         <SafeAreaView>
             <View style={styles.main}>
                 <View style={styles.date}>
-                    <Text style={styles.datetext}>{today}, {data} </Text>
+                    <Text style={styles.datetext}>{today}, {"\n"} {data}-{currentMonth} </Text>
                 </View>
                 <View style={styles.place}>
                     {loading && <ActivityIndicator style={styles.indicator} size={"small"} />}
@@ -54,6 +63,7 @@ const styles = StyleSheet.create({
         color: "white",
         fontFamily: "Medium",
         fontSize: 14,
+        textAlign: "left",
     },
     place: {
         display: "flex",

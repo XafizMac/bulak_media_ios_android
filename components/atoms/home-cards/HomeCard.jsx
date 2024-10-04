@@ -1,45 +1,53 @@
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 export default function HomeCard() {
 
     const navigation = useNavigation()
 
     const data = [
-        { title: 'Шахада', url: "home", img: require("../../../assets/img/Shahada.png") },
-        { title: 'Тасбихат', url: "home", img: require("../../../assets/img/Tasbih.png") },
-        { title: 'Молитвы', url: "home", img: require("../../../assets/img/Dua.png") },
-        { title: 'Жавшан', url: "home", img: require("../../../assets/img/Javshan.png") },
-        { title: 'Тафрижия', url: "home", img: require("../../../assets/img/Tafrijia.png") },
-    ]
+        { title: 'Шахада', url: "Shahada", img: require("../../../assets/img/Shahada.png") },
+        { title: 'Суры', url: "Surnavigation", img: require("../../../assets/img/Sur.png") },
+        { title: 'Тасбихат', url: "Tasbihat", img: require("../../../assets/img/Tasbih.png") },
+        { title: 'Молитвы', url: "Prayer", img: require("../../../assets/img/Dua.png") },
+        { title: 'Жавшан', url: "Javshan", img: require("../../../assets/img/Javshan.png") },
+        { title: 'Тафрижия', url: "Tafrijia", img: require("../../../assets/img/Tafrijia.png") },
+    ] 
 
     const handlePress = (url) => {
-        navigation.navigate("Quran");
+        navigation.navigate(url);
     }
 
     return (
         <View style={styles.cards}>
-            {data.map((card, index) => {
-                return (
-                    <Pressable key={index} onPress={() => handlePress(card.url)}>
-                        <View style={styles.card}>
-                            <View style={styles.cardContent}>
-                                <Image style={styles.img} source={card.img} alt="" />
-                            </View>
-                            <Text style={styles.title}>{card.title}</Text>
-                        </View>
-                    </Pressable>
-                )
-            })}
+            <ScrollView showsHorizontalScrollIndicator={false} horizontal style={styles.scroll}>
+                <View style={styles.cards}>
+                    {data.map((card, index) => {
+                        return (
+                            <TouchableOpacity key={index} onPress={() => handlePress(card.url)}>
+                                <View style={styles.card}>
+                                    <View style={styles.cardContent}>
+                                        <Image style={styles.img} source={card.img} alt="" />
+                                    </View>
+                                    <Text style={styles.title}>{card.title}</Text>
+                                </View>
+                            </TouchableOpacity>
+                        )
+                    })}
+                </View>
+            </ScrollView>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+    scroll: {
+        overflow: "visible"
+    },
     cards: {
         width: "100%",
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        gap: 12,
     },
     card: {
         gap: 8,
@@ -51,7 +59,7 @@ const styles = StyleSheet.create({
         width: 60,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 15
+        borderRadius: 12
     },
     img: {
         width: 25,

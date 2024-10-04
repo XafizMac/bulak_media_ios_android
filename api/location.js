@@ -1,43 +1,51 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import * as Location from 'expo-location';
 
 const useLocation = () => {
     const [location, setLocation] = useState(null);
     const [errorMessage, setErrorMsg] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [coords, setCoords] = useState(null);
 
-    useEffect(() => {
-        const fetchLocation = async () => {
-            try {
-                const { status } = await Location.requestForegroundPermissionsAsync();
-                if (status !== 'granted') {
-                    setErrorMsg('Permission to access location was denied');
-                    setLoading(false);
-                    return;
-                }
-                const myLocation = await Location.getCurrentPositionAsync({});
-                const reverse = await Location.reverseGeocodeAsync({
-                    latitude: myLocation.coords.latitude,
-                    longitude: myLocation.coords.longitude
-                });
-
-                if (reverse && reverse.length > 0) {
-                    setLocation(reverse[0]);
-                } else {
-                    setErrorMsg('Could not retrieve reverse geocode information');
-                }
-            } catch (e) {
-                setErrorMsg('Error getting location');
-                console.error(e);
-            } finally {
+    const fetchLocation = useCallback(async () => {
+        try {
+            const { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+                setErrorMsg('В разрешении на доступ к местоположению было отказано');
                 setLoading(false);
+                return;
             }
-        };
+            const myLocation = await Location.getCurrentPositionAsync({});
+            setCoords(myLocation.coords);
 
-        fetchLocation();
+            if (!myLocation) {
+                setErrorMsg("Не удалось определить местоположение");
+                setLoading(false);
+                return;
+            }
+
+            const reverse = await Location.reverseGeocodeAsync({
+                latitude: myLocation.coords.latitude,
+                longitude: myLocation.coords.longitude
+            });
+
+            if (reverse && reverse.length > 0) {
+                setLocation(reverse[0]);
+            } else {
+                setErrorMsg('Не удалось получить информацию обратного геокодирования');
+            }
+        } catch (e) {
+            setErrorMsg('Ошибка при получении местоположения');
+        } finally {
+            setLoading(false);
+        }
     }, []);
 
-    return { location, errorMessage, loading };
+    useEffect(() => {
+        fetchLocation();
+    }, [fetchLocation]);
+
+    return { location, coords, errorMessage, loading };
 };
 
 export default useLocation;

@@ -1,15 +1,12 @@
-import {
-  StyleSheet,
-  View,
-} from "react-native";
+import { StyleSheet, View } from "react-native";
 import Times from "../../atoms/prayer-times/Times";
 import HomeCard from "../../atoms/home-cards/HomeCard";
 
 export default function BottomContent() {
   return (
     <View style={styles.content}>
-          <Times />
-          <HomeCard />
+      <Times />
+      <HomeCard />
     </View>
   );
 }

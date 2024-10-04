@@ -13,7 +13,7 @@ export default function BabButton({ num, number, setNumber }) {
   return (
     <Pressable onPress={handleClick}>
       <View style={styles.button}>
-        <Text style={styles.text}>{num}.Баб</Text>
+        <Text style={styles.text}>{num}-бап</Text>
       </View>
     </Pressable>
   );

@@ -145,11 +145,10 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     backgroundColor: "#2E0A30",
+    paddingBottom: 20,
   },
   container: {
     paddingHorizontal: 12,
-    paddingVertical: 20,
-    paddingBottom: 120,
   },
   dua: {
     display: "flex",

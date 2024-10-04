@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import {
   View,
   Text,
   StyleSheet,
-  ScrollView,
   Pressable,
   ActivityIndicator,
-} from "react-native";
-import dataOfSurah from "../../../data/list-surah.json";
-import QuranCard from "../../atoms/quran-card";
-import AyahButton from "../../atoms/quranAyahBtn";
-import QuranInput from "../../atoms/quranInput";
-import { Feather } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
+  FlatList,
+} from "react-native"
+import dataOfSurah from "../../../data/surat.json"
+import QuranCard from "../../atoms/quran-card"
+import AyahButton from "../../atoms/quranAyahBtn"
+import QuranInput from "../../atoms/quranInput"
+import { Feather } from "@expo/vector-icons"
+import { AntDesign } from "@expo/vector-icons"
 
 const Quran = () => {
   const [originalData] = useState(dataOfSurah);
@@ -30,7 +30,7 @@ const Quran = () => {
   // Фильтрация по названием суры
   const filterData = (text) => {
     const filteredData = originalData.filter((item) =>
-      item.namaLatin.toLowerCase().includes(text.toLowerCase())
+      item.namaLatin.toLowerCase().startsWith(text.toLowerCase()),
     );
     setData(filteredData.length > 0 && filteredData);
   };
@@ -52,42 +52,40 @@ const Quran = () => {
             )}
           </Pressable>
         </View>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <View>
-            <QuranCard />
+        <View>
+          <QuranCard />
+        </View>
+        <View style={styles.tabContent}>
+          <View style={styles.tab}>
+            <Text style={styles.activeTab}>Суры</Text>
+            <Text style={styles.nonActiveTab}>На арабском</Text>
           </View>
-          <View style={styles.tabContent}>
-            <View style={styles.tab}>
-              <Text style={styles.activeTab}>Суры</Text>
-              <Text style={styles.nonActiveTab}>На арабском</Text>
-            </View>
-            <View style={styles.line}>
-              <View style={styles.activeLine}></View>
-            </View>
+          <View style={styles.line}>
+            <View style={styles.activeLine}></View>
           </View>
-          {originalData ? (
-            <View>
-              {data.length ? (
-                data.map((item, index) => {
-                  return (
-                    <AyahButton
-                      key={index}
-                      name={item.nama}
-                      nameLatin={item.namaLatin}
-                      index={item.nomor}
-                      place={item.tempatTurun}
-                      verses={item.jumlahAyat}
-                    />
-                  );
-                })
-              ) : (
-                <Text style={styles.notFoundText}>{filterText} не найден</Text>
-              )}
-            </View>
-          ) : (
-            <ActivityIndicator />
-          )}
-        </ScrollView>
+        </View>
+        {originalData ? (
+          <View style={styles.surContainer}>
+            <FlatList
+              style={styles.surContainerList}
+              showsVerticalScrollIndicator={false}
+              data={data}
+              renderItem={({ item, index }) => (
+                <AyahButton
+                  key={index}
+                  name={item.nama}
+                  nameLatin={item.namaLatin}
+                  index={item.nomor}
+                  place={item.tempatTurun}
+                  verses={item.jumlahAyat}
+                />
+              )
+              }
+            />
+          </View>
+        ) : (
+          <ActivityIndicator />
+        )}
       </View>
     </View>
   );
@@ -148,6 +146,16 @@ const styles = StyleSheet.create({
     width: 80,
     backgroundColor: "#F2BB4A",
     height: "100%",
+  },
+  surContainer: {
+    height: "70%",
+    marginBottom: "200px",
+    overflow: "hidden",
+    paddingBottom: 200
+  },
+  surContainerList: {
+    overflow: "visible",
+    marginBottom: "200px",
   },
   notFoundText: {
     color: "white",

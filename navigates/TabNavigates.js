@@ -1,44 +1,42 @@
-import { Text, View, Image, Dimensions } from "react-native";
+import { Text, View, Dimensions } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Navigate from "./MenuNavigate";
 // Импорт иконки
-import QuranLogo from "../assets/icons/quran.png";
 import { Foundation } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-import { Fontisto } from '@expo/vector-icons';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Home from "../components/pages/ramadan_homepage/Home";
 import Quran from "../components/pages/quran/Quran";
-import { Menu } from "../components/pages/home/Menu";
-import { Compass } from "../components/pages/compass";
+import { SavedNavigation } from "./saved_ayat_navigation";
 
 const Tab = createBottomTabNavigator();
 
 const windowWidth = Dimensions.get("window").width;
-const currentWidth = windowWidth >= 390;
+
 const screenOptions = {
   tabBarShowLabel: false,
   headerShown: false,
   headerTransparent: true,
   tabBarStyle: {
-    backfaceVisibility: true,
-    left: 0,
-    bottom: currentWidth ? 0 : -7,
-    bottom: 0,
+    position: "absolute",
+    left: (windowWidth - (windowWidth * 65 / 100)) / 3,
+    bottom: 20,
     right: 0,
-    height: currentWidth ? 100 : 95,
-    width: "100%",
+    width: "65%",
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "rgba(70, 17, 81, 1)",
     paddingTop: 25,
-    shadowColor: "#000",
+    borderWidth: 0,
+    borderTopColor: "rgba(70, 17, 81, 1)",
+    borderRadius: "100%",
+    marginHorizontal: "5%",
+    shadowColor: "black",
     shadowOffset: {
       width: 0,
-      height: -30,
+      height: 0,
     },
-    shadowOpacity: 0.3,
+    shadowOpacity: .4,
     shadowRadius: 20,
-    borderWidth: 0,
-    borderTopColor: "#5D2559",
-    tabBarHideOnKeyboard: true
   },
 };
 
@@ -51,23 +49,26 @@ export default function TabNavigates() {
             return (
               <View
                 style={
-                  focused && {
-                    backgroundColor: "#74277A",
-                    borderRadius: 100,
-                    flexDirection: "column",
+                  focused ? {
                     justifyContent: "center",
                     alignItems: "center",
-                    width: 60,
-                    height: 60,
-                  }
-                }
+                    shadowColor: "#F8C04B",
+                    shadowOffset: {
+                      width: 0,
+                      height: 0,
+                    },
+                    shadowOpacity: 1,
+                    shadowRadius: 20,
+                  } : {
+
+                  }}
               >
                 <Text>
-                  <Foundation name="home" size={30} color="white" />
+                  <Foundation name="home" size={30} color={focused ? "#F2BB4A" : "white"} />
                 </Text>
               </View>
             );
-          },
+          }
         }}
         name="home"
         component={Home}
@@ -81,12 +82,8 @@ export default function TabNavigates() {
                 style={
                   focused
                     ? {
-                      width: 70,
-                      height: 70,
-                      flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
-                      borderRadius: 100,
                       shadowColor: "#F8C04B",
                       shadowOffset: {
                         width: 0,
@@ -96,24 +93,14 @@ export default function TabNavigates() {
                       shadowRadius: 20,
                     }
                     : {
-                      width: 70,
-                      height: 70,
-                      flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
-                      borderRadius: 100,
                     }
                 }
               >
                 <Text>
-                  <Image
-                    style={{
-                      width: 60,
-                      height: 60,
-                      objectFit: "scale-down",
-                    }}
-                    source={QuranLogo}
-                  />
+                  {/* <Feather name="book-open" size={30} color={focused ? "#F2BB4A" : "white"} /> */}
+                  <FontAwesome5 name="book-open" size={25} color={focused ? "#F2BB4A" : "white"} />
                 </Text>
               </View>
             );
@@ -122,26 +109,34 @@ export default function TabNavigates() {
         name="Quran"
       />
       <Tab.Screen
-        component={Compass}
-        name="Compass"
+        component={SavedNavigation}
+        name="Saved"
         options={{
           tabBarIcon: ({ focused }) => {
             return (
               <View
                 style={
-                  focused && {
-                    backgroundColor: "#74277A",
-                    borderRadius: 100,
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width: 60,
-                    height: 60,
-                  }
+                  focused
+                    ? {
+                      alignItems: "center",
+                      justifyContent: "center",
+                      shadowColor: "#F8C04B",
+                      shadowOffset: {
+                        width: 0,
+                        height: 0,
+                      },
+                      shadowOpacity: 1,
+                      shadowRadius: 20,
+                    }
+                    : {
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }
                 }
               >
                 <Text>
-                  <Fontisto name="compass" size={30} color="white" />
+                  {/* <FontAwesome5 name="bookmark" size={24} color={focused ? "#F2BB4A" : "white"} /> */}
+                  <FontAwesome name="bookmark" size={25} color={focused ? "#F2BB4A" : "white"} />
                 </Text>
               </View>
             );
@@ -151,3 +146,39 @@ export default function TabNavigates() {
     </Tab.Navigator>
   );
 }
+
+
+{/* <Tab.Screen
+  component={Compass}
+  name="Compass"
+  options={{
+    tabBarIcon: ({ focused }) => {
+      return (
+        <View
+          style={
+            focused
+              ? {
+                alignItems: "center",
+                justifyContent: "center",
+                shadowColor: "#F8C04B",
+                shadowOffset: {
+                  width: 0,
+                  height: 0,
+                },
+                shadowOpacity: 1,
+                shadowRadius: 20,
+              }
+              : {
+                alignItems: "center",
+                justifyContent: "center",
+              }
+          }
+        >
+          <Text>
+            <Fontisto name="compass" size={26} color={focused ? "#F2BB4A" : "white"} />
+          </Text>
+        </View>
+      );
+    },
+  }}
+/> */}

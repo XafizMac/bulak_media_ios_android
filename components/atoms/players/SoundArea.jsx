@@ -1,10 +1,9 @@
 import { View, Image, Pressable, StyleSheet, Dimensions } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
-import Play from "../../../assets/img/Play.png";
-import Stop from "../../../assets/img/Stop.png";
 import { Audio } from "expo-av";
 import Slider from "@react-native-community/slider";
 import Linear from "../../../assets/img/Linear.png";
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function SoundArea({ audioTrack }) {
   const sound = useRef(new Audio.Sound());
@@ -19,7 +18,6 @@ export default function SoundArea({ audioTrack }) {
   const playSound = async () => {
     try {
       const result = await sound.current.getStatusAsync();
-
       if (result.isLoaded) {
         if (!result.isPlaying) {
           await sound.current.playAsync();
@@ -59,7 +57,6 @@ export default function SoundArea({ audioTrack }) {
   const handleSlidingComplete = async (value) => {
     try {
       await sound.current.setPositionAsync(value);
-      // Если звук не воспроизводится, воспроизведите его
       if (!isPlaying) {
         await sound.current.playAsync();
         setPlaying(true);
@@ -115,10 +112,9 @@ export default function SoundArea({ audioTrack }) {
         <View style={styles.container}>
           <View style={styles.playArea}>
             <Pressable onPress={isPlaying ? stopSound : playSound}>
-              <Image
-                source={isPlaying ? Stop : Play}
-                style={{ width: 60, height: 60 }}
-              />
+              <View style={{width: 60, height: 60, alignItems: "center", justifyContent: "center"}}>
+                <Ionicons name={isPlaying ? "ios-pause" : "ios-play"} size={40} color="#fff" />
+              </View>
             </Pressable>
             <View style={styles.sliderMinutes}>
               <Slider
@@ -144,17 +140,18 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 100,
     position: "absolute",
-    bottom: windowWidth >= 393 ? 80 : 70,
+    bottom: 0,
     left: 0,
     right: 0,
   },
   playArea: {
-    // backgroundColor: "#5D2559",
+    backgroundColor: "#5D2559",
     width: "100%",
     alignSelf: "center",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    padding: 5,
     borderRadius: 20,
   },
   container: {

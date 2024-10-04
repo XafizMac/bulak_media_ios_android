@@ -54,16 +54,14 @@ const QuranSurs = ({ navigation, route }) => {
       const ayatInfo = responseData.data;
       setInfo(ayatInfo);
       setAyatList(ayatData);
-      console.log(data);
     } catch (e) {
       console.log("Error loading surah", e);
     }
   };
 
-  const handleChangeText = () => {};
+  const handleChangeText = () => { };
 
   const handleShowOptions = () => {
-    console.log("Working! ✅");
     setModalOpen(!isModalOpen);
   };
   return (
@@ -108,6 +106,7 @@ const QuranSurs = ({ navigation, route }) => {
                       translation={translation}
                       key={index}
                       index={index}
+                      info={info}
                       arabicText={ayah.teksArab}
                       meaningText={ayah.teksIndonesia}
                     />
@@ -119,6 +118,9 @@ const QuranSurs = ({ navigation, route }) => {
             )}
           </View>
         </ScrollView>
+
+
+        {/* Modal */}
         <BottomModal
           swipeDirection={["up", "down"]}
           visible={isModalOpen}

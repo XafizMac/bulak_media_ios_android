@@ -52,14 +52,12 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 12,
     height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    paddingTop: 20,
   },
   button_list: {
+    marginTop: 40,
     height: "100%",
     flexDirection: "column",
     gap: 20,
-    justifyContent: "center",
+    justifyContent: "center"
   },
 });

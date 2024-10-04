@@ -92,10 +92,10 @@ export const Sur = () => {
             {ListOfSur.map((item, index) => {
               return (
                 <SurButton
+                  key={index}
                   title={lang === "ru" ? item.titleRus : item.titleKg}
                   number={item.number}
                   name={item.name}
-                  key={index}
                 />
               );
             })}
@@ -114,8 +114,7 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingHorizontal: 12,
-    paddingVertical: 10,
-    paddingBottom: 120,
+    paddingBottom: 30,
   },
   btn_list: {
     display: "flex",

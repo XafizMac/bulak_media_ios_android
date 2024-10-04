@@ -2,31 +2,67 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
   Pressable,
   Vibration,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import Animated, { useSharedValue, withSpring } from 'react-native-reanimated';
+import { Audio } from "expo-av";
+import audioUrl from "../../../../assets/audio/beat.wav";
 export default function Counter() {
+  const sound = useRef(new Audio.Sound());
   const [number, setNumber] = useState(0);
-  const [size, setSize] = useState(240);
-  const handleMaximize = () => {
-    if (size >= 600) {
-      setSize(600);
-    } else {
-      setSize(size + 100);
+  const height = useSharedValue(200);
+
+
+  const loadAudio = async () => {
+    await sound.current.loadAsync(audioUrl, {}, false);
+  }
+
+  const playAudio = async () => {
+    try {
+      const result = await sound.current.getStatusAsync();
+      if (result.isLoaded) {
+        if (!result.isPlaying) {
+          await sound.current.stopAsync();
+          await sound.current.playAsync();
+        }
+      }
     }
-  };
-  const handleMinimize = () => setSize(size - 100);
+    catch (err) {
+      console.error("Error playing sound", err);
+    }
+  }
+
+  // Size
+  const handleMaximize = useCallback(() => {
+    if (height.value >= 600) {
+      height.value = 600;
+    } else {
+      height.value = withSpring(height.value + 100);
+    }
+  }, [height]);
+
+  const handleMinimize = useCallback(() => {
+    if (height.value <= 200) {
+      height.value = 200;
+    } else {
+      height.value = withSpring(height.value - 100);
+    }
+  }, [height]);
+
+  // ! Count & Tab
   const handleCount = () => {
     setNumber((prev) => prev + 1);
     Vibration.vibrate(50);
     saveNumber(number + 1);
+    playAudio();
   };
+
+  // Zero
   const handleZero = () => {
     setNumber(0);
     saveNumber(0);
@@ -35,6 +71,15 @@ export default function Counter() {
   useEffect(() => {
     loadSavedNumbers();
   }, []);
+
+  useEffect(() => {
+    loadAudio();
+
+    return () => {
+      sound.current.unloadAsync();
+    };
+  }, [])
+
   const loadSavedNumbers = async () => {
     try {
       const savedNumber = await AsyncStorage.getItem("savedNumber");
@@ -54,13 +99,13 @@ export default function Counter() {
   };
 
   return (
-    <View style={[styles.counter, { height: size }]}>
+    <Animated.View style={[styles.counter, { height: height }]}>
       <View style={styles.counter_row}>
         <View style={styles.size_btns}>
           <Pressable onPress={handleMaximize}>
             <MaterialIcons name="keyboard-arrow-up" size={40} color="white" />
           </Pressable>
-          {size >= 300 && (
+          {height.value >= 200 && (
             <Pressable onPress={handleMinimize}>
               <MaterialIcons
                 name="keyboard-arrow-down"
@@ -79,7 +124,7 @@ export default function Counter() {
           <Text style={styles.number}>{number}</Text>
         </View>
       </Pressable>
-    </View>
+    </Animated.View>
   );
 }
 
@@ -88,7 +133,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#461151",
     position: "absolute",
     width: "100%",
-    bottom: 60,
+    bottom: 0,
     right: 0,
     padding: 10,
     paddingBottom: 80,

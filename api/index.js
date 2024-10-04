@@ -1,34 +1,31 @@
-import { useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect, useState } from "react";
 import useLocation from "./location";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function PrayerTimes() {
-  const [datas, setDatas] = useState([]);
-  const [loading, setLoading] = useState(true)
-  const { location } = useLocation();
+  const { location, loading, errorMessage } = useLocation();
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+
+  useEffect(() => { 
+    loadTimes();
+  }, [location]);
 
   const loadTimes = async () => {
     try {
-      // const cachedData = await AsyncStorage.getItem("times");
-      const date = new Date();
-      const year = date.getFullYear();
-      const month = date.getMonth();
-      const response = await fetch(
-        `https://api.aladhan.com/v1/calendarByAddress/${year}/${month}?address=${location.city}%&method=3`
-      );
-      const data = await response.json();
-      const newDatas = data.data.map((item) => item.timings);
-      setDatas(newDatas);
-      await AsyncStorage.setItem("times", JSON.stringify(datas));
+      if (location !== null) {
+        const response = await fetch(
+          `https://api.aladhan.com/v1/calendarByAddress/${year}/${month}?address=${location?.city}%&method=4`
+        );
+        const responseData = await response.json();
+        await AsyncStorage.setItem("times", JSON.stringify(responseData?.data));
+      }
     } catch (error) {
       console.error("Ошибка загрузки данных", error);
     }
-    finally {
-      setLoading(false);
-    }
   };
-  return { loading, datas }, loadTimes;
+  return { loading, errorMessage }, loadTimes;
 }
 
 export default PrayerTimes;
@@ -40,6 +37,6 @@ export default PrayerTimes;
 (✔️) 1. Get permission from User(expo-location)
 (✔️) 2. Get location (long, lat)
 (✔️) 3. Reverse geocode API
-4. Get prayer times for place
+(✔️)4. Get prayer times for place
 
 */

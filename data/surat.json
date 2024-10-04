@@ -1,0 +1,800 @@
+[
+  {
+    "nomor": 1,
+    "nama": "الفاتحة",
+    "namaLatin": "Аль-Фатиха",
+    "jumlahAyat": 7,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 2,
+    "nama": "البقرة",
+    "namaLatin": "Аль-Бакара",
+    "jumlahAyat": 286,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 3,
+    "nama": "اٰل عمران",
+    "namaLatin": "Аль-Имран",
+    "jumlahAyat": 200,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 4,
+    "nama": "النساۤء",
+    "namaLatin": "Ан-Ниса'",
+    "jumlahAyat": 176,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 5,
+    "nama": "الماۤئدة",
+    "namaLatin": "Аль-Маида",
+    "jumlahAyat": 120,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 6,
+    "nama": "الانعام",
+    "namaLatin": "Аль-Анам",
+    "jumlahAyat": 165,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 7,
+    "nama": "الاعراف",
+    "namaLatin": "Аль-Араф",
+    "jumlahAyat": 206,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 8,
+    "nama": "الانفال",
+    "namaLatin": "Аль-Анфаль",
+    "jumlahAyat": 75,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 9,
+    "nama": "التوبة",
+    "namaLatin": "Ат-Тауба",
+    "jumlahAyat": 129,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 10,
+    "nama": "یونس",
+    "namaLatin": "Юнус",
+    "jumlahAyat": 109,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 11,
+    "nama": "هود",
+    "namaLatin": "Худ",
+    "jumlahAyat": 123,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 12,
+    "nama": "یوسف",
+    "namaLatin": "Йусуф",
+    "jumlahAyat": 111,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 13,
+    "nama": "الرّعد",
+    "namaLatin": "Ар-Раад",
+    "jumlahAyat": 43,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 14,
+    "nama": "ابراهیم",
+    "namaLatin": "Ибрахим",
+    "jumlahAyat": 52,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 15,
+    "nama": "الحجر",
+    "namaLatin": "Аль-Хиджр",
+    "jumlahAyat": 99,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 16,
+    "nama": "النحل",
+    "namaLatin": "Ан-Нахль",
+    "jumlahAyat": 128,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 17,
+    "nama": "الاسراء",
+    "namaLatin": "Аль-Исра",
+    "jumlahAyat": 111,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 18,
+    "nama": "الکهف",
+    "namaLatin": "Аль-Кахф",
+    "jumlahAyat": 110,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 19,
+    "nama": "مريم",
+    "namaLatin": "Марьям",
+    "jumlahAyat": 98,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 20,
+    "nama": "طه",
+    "namaLatin": "Та Ха",
+    "jumlahAyat": 135,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 21,
+    "nama": "الانبياء",
+    "namaLatin": "Аль-Анбийа",
+    "jumlahAyat": 112,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 22,
+    "nama": "الحج",
+    "namaLatin": "Аль-Хадж",
+    "jumlahAyat": 78,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 23,
+    "nama": "المؤمنون",
+    "namaLatin": "Аль-Муминун",
+    "jumlahAyat": 118,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 24,
+    "nama": "النور",
+    "namaLatin": "Ан-Нур",
+    "jumlahAyat": 64,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 25,
+    "nama": "الفرقان",
+    "namaLatin": "Аль-Фуркан",
+    "jumlahAyat": 77,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 26,
+    "nama": "الشعراء",
+    "namaLatin": "Аш-Шуара",
+    "jumlahAyat": 227,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 27,
+    "nama": "النمل",
+    "namaLatin": "Ан-Намль",
+    "jumlahAyat": 93,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 28,
+    "nama": "القصص",
+    "namaLatin": "Аль-Касас",
+    "jumlahAyat": 88,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 29,
+    "nama": "العنكبوت",
+    "namaLatin": "Аль-Анкабут",
+    "jumlahAyat": 69,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 30,
+    "nama": "الروم",
+    "namaLatin": "Ар-Рум",
+    "jumlahAyat": 60,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 31,
+    "nama": "لقمان",
+    "namaLatin": "Лукман",
+    "jumlahAyat": 34,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 32,
+    "nama": "السجدة",
+    "namaLatin": "Ас-Саджда",
+    "jumlahAyat": 30,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 33,
+    "nama": "الأحزاب",
+    "namaLatin": "Аль-Ахзаб",
+    "jumlahAyat": 73,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 34,
+    "nama": "سبإ",
+    "namaLatin": "Саба",
+    "jumlahAyat": 54,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 35,
+    "nama": "فاطر",
+    "namaLatin": "Фатыр",
+    "jumlahAyat": 45,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 36,
+    "nama": "يس",
+    "namaLatin": "Ясин",
+    "jumlahAyat": 83,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 37,
+    "nama": "الصافات",
+    "namaLatin": "Ас-Саффат",
+    "jumlahAyat": 182,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 38,
+    "nama": "ص",
+    "namaLatin": "Сад",
+    "jumlahAyat": 88,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 39,
+    "nama": "الزمر",
+    "namaLatin": "Аз-Зумар",
+    "jumlahAyat": 75,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 40,
+    "nama": "غافر",
+    "namaLatin": "Гафир",
+    "jumlahAyat": 85,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 41,
+    "nama": "فصّلت",
+    "namaLatin": "Фуссилат",
+    "jumlahAyat": 54,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 42,
+    "nama": "الشورى",
+    "namaLatin": "Аш-Шура",
+    "jumlahAyat": 53,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 43,
+    "nama": "الزخرف",
+    "namaLatin": "Аз-Зухруф",
+    "jumlahAyat": 89,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 44,
+    "nama": "الدخان",
+    "namaLatin": "Ад-Духан",
+    "jumlahAyat": 59,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 45,
+    "nama": "الجاثية",
+    "namaLatin": "Аль-Джасия",
+    "jumlahAyat": 37,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 46,
+    "nama": "الاحقاف",
+    "namaLatin": "Аль-Ахкаф",
+    "jumlahAyat": 35,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 47,
+    "nama": "محمّد",
+    "namaLatin": "Мухаммад",
+    "jumlahAyat": 38,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 48,
+    "nama": "الفتح",
+    "namaLatin": "Аль-Фатх",
+    "jumlahAyat": 29,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 49,
+    "nama": "الحجرٰت",
+    "namaLatin": "Аль-Худжурат",
+    "jumlahAyat": 18,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 50,
+    "nama": "ق",
+    "namaLatin": "Каф",
+    "jumlahAyat": 45,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 51,
+    "nama": "الذّٰريٰت",
+    "namaLatin": "Аз-Зарият",
+    "jumlahAyat": 60,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 52,
+    "nama": "الطور",
+    "namaLatin": "Ат-Тур",
+    "jumlahAyat": 49,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 53,
+    "nama": "النجم",
+    "namaLatin": "Ан-Наджм",
+    "jumlahAyat": 62,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 54,
+    "nama": "القمر",
+    "namaLatin": "Аль-Камар",
+    "jumlahAyat": 55,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 55,
+    "nama": "الرحمن",
+    "namaLatin": "Ар-Рахман",
+    "jumlahAyat": 78,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 56,
+    "nama": "الواقعة",
+    "namaLatin": "Аль-Вакиа",
+    "jumlahAyat": 96,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 57,
+    "nama": "الْحَدِيد",
+    "namaLatin": "Аль-Хадид",
+    "jumlahAyat": 29,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 58,
+    "nama": "الْمُجَادِلَة",
+    "namaLatin": "Аль-Муджадила",
+    "jumlahAyat": 22,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 59,
+    "nama": "الْحَشْر",
+    "namaLatin": "Аль-Хашр",
+    "jumlahAyat": 24,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 60,
+    "nama": "الْمُمْتَحَنَة",
+    "namaLatin": "Аль-Мумтахана",
+    "jumlahAyat": 13,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 61,
+    "nama": "الْصَّف",
+    "namaLatin": "Ас-Сафф",
+    "jumlahAyat": 14,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 62,
+    "nama": "الْجُمُعَة",
+    "namaLatin": "Аль-Джума",
+    "jumlahAyat": 11,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 63,
+    "nama": "الْمُنَافِقُون",
+    "namaLatin": "Аль-Мунафикун",
+    "jumlahAyat": 11,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 64,
+    "nama": "التغابن",
+    "namaLatin": "Ат-Тагабун",
+    "jumlahAyat": 18,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 65,
+    "nama": "الطلاق",
+    "namaLatin": "Ат-Талак",
+    "jumlahAyat": 12,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 66,
+    "nama": "التحريم",
+    "namaLatin": "Ат-Тахрим",
+    "jumlahAyat": 12,
+    "tempatTurun": "Медина"
+  },
+  {
+    "nomor": 67,
+    "nama": "الملك",
+    "namaLatin": "Аль-Мульк",
+    "jumlahAyat": 30,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 68,
+    "nama": "القلم",
+    "namaLatin": "Аль-Калям",
+    "jumlahAyat": 52,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 69,
+    "nama": "الحاۤقّة",
+    "namaLatin": "Аль-Хакка",
+    "jumlahAyat": 52,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 70,
+    "nama": "المعارج",
+    "namaLatin": "Аль-Мааридж",
+    "jumlahAyat": 44,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 71,
+    "nama": "نوح",
+    "namaLatin": "Нух",
+    "jumlahAyat": 28,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 72,
+    "nama": "الجن",
+    "namaLatin": "Аль-Джинн",
+    "jumlahAyat": 28,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 73,
+    "nama": "المزمل",
+    "namaLatin": "Аль-Муззаммиль",
+    "jumlahAyat": 20,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 74,
+    "nama": "المدثر",
+    "namaLatin": "Аль-Муддассир",
+    "jumlahAyat": 56,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 75,
+    "nama": "القيامة",
+    "namaLatin": "Аль-Кийама",
+    "jumlahAyat": 40,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 76,
+    "nama": "الإنسان",
+    "namaLatin": "Аль-Инсан",
+    "jumlahAyat": 31,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 77,
+    "nama": "المرسلات",
+    "namaLatin": "Аль-Мурсалят",
+    "jumlahAyat": 50,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 78,
+    "nama": "النبأ",
+    "namaLatin": "Ан-Наба",
+    "jumlahAyat": 40,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 79,
+    "nama": "النازعات",
+    "namaLatin": "Ан-Назиат",
+    "jumlahAyat": 46,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 80,
+    "nama": "عبس",
+    "namaLatin": "Абаса",
+    "jumlahAyat": 42,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 81,
+    "nama": "التكوير",
+    "namaLatin": "Ат-Таквир",
+    "jumlahAyat": 29,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 82,
+    "nama": "الانفطار",
+    "namaLatin": "Аль-Инфитар",
+    "jumlahAyat": 19,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 83,
+    "nama": "المطففين",
+    "namaLatin": "Аль-Мутаффифин",
+    "jumlahAyat": 36,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 84,
+    "nama": "الانشقاق",
+    "namaLatin": "Аль-Иншикак",
+    "jumlahAyat": 25,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 85,
+    "nama": "البروج",
+    "namaLatin": "Аль-Бурудж",
+    "jumlahAyat": 22,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 86,
+    "nama": "الطارق",
+    "namaLatin": "Ат-Тарик",
+    "jumlahAyat": 17,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 87,
+    "nama": "الأعلى",
+    "namaLatin": "Аль-Аля",
+    "jumlahAyat": 19,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 88,
+    "nama": "الغاشية",
+    "namaLatin": "Аль-Гашия",
+    "jumlahAyat": 26,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 89,
+    "nama": "الفجر",
+    "namaLatin": "Аль-Фаджр",
+    "jumlahAyat": 30,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 90,
+    "nama": "البلد",
+    "namaLatin": "Аль-Балад",
+    "jumlahAyat": 20,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 91,
+    "nama": "الشمس",
+    "namaLatin": "Аш-Шамс",
+    "jumlahAyat": 15,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 92,
+    "nama": "الليل",
+    "namaLatin": "Аль-Лайл",
+    "jumlahAyat": 21,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 93,
+    "nama": "الضحى",
+    "namaLatin": "Ад-Духа",
+    "jumlahAyat": 11,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 94,
+    "nama": "الشرح",
+    "namaLatin": "Аш-Шарх",
+    "jumlahAyat": 8,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 95,
+    "nama": "التين",
+    "namaLatin": "Ат-Тин",
+    "jumlahAyat": 8,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 96,
+    "nama": "العلق",
+    "namaLatin": "Аль-Алак",
+    "jumlahAyat": 19,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 97,
+    "nama": "القدر",
+    "namaLatin": "Аль-Кадр",
+    "jumlahAyat": 5,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 98,
+    "nama": "البينة",
+    "namaLatin": "Аль-Баййина",
+    "jumlahAyat": 8,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 99,
+    "nama": "الزلزلة",
+    "namaLatin": "Аз-Залзала",
+    "jumlahAyat": 8,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 100,
+    "nama": "العاديات",
+    "namaLatin": "Аль-Адият",
+    "jumlahAyat": 11,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 101,
+    "nama": "القارعة",
+    "namaLatin": "Аль-Кари'а",
+    "jumlahAyat": 11,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 102,
+    "nama": "التكاثر",
+    "namaLatin": "Ат-Такасур  ",
+    "jumlahAyat": 8,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 103,
+    "nama": "العصر",
+    "namaLatin": "Аль-Аср",
+    "jumlahAyat": 3,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 104,
+    "nama": "الهمزة",
+    "namaLatin": "Аль-Хумаза",
+    "jumlahAyat": 9,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 105,
+    "nama": "الفيل",
+    "namaLatin": "Аль-Филь",
+    "jumlahAyat": 5,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 106,
+    "nama": "قريش",
+    "namaLatin": "Курайш",
+    "jumlahAyat": 4,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 107,
+    "nama": "الماعون",
+    "namaLatin": "Аль-Маун",
+    "jumlahAyat": 7,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 108,
+    "nama": "الكوثر",
+    "namaLatin": "Аль-Каусар",
+    "jumlahAyat": 3,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 109,
+    "nama": "الكافرون",
+    "namaLatin": "Аль-Кафирун",
+    "jumlahAyat": 6,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 110,
+    "nama": "النصر",
+    "namaLatin": "Ан-Наср",
+    "jumlahAyat": 3,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 111,
+    "nama": "المسد",
+    "namaLatin": "Аль-Масад",
+    "jumlahAyat": 5,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 112,
+    "nama": "الإخلاص",
+    "namaLatin": "Аль-Ихлас",
+    "jumlahAyat": 4,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 113,
+    "nama": "الفلق",
+    "namaLatin": "Аль-Фаляк",
+    "jumlahAyat": 5,
+    "tempatTurun": "Мекке"
+  },
+  {
+    "nomor": 114,
+    "nama": "الناس",
+    "namaLatin": "Ан-Нас",
+    "jumlahAyat": 6,
+    "tempatTurun": "Мекке"
+  }
+]
