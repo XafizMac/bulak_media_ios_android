@@ -10,11 +10,16 @@ import React, { useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import useStore from "../../../store/store";
+import { BottomModal, ModalContent } from "react-native-modals";
 
 const Ayah = ({ arabicText, index, meaningText, translation, info }) => {
   const [saveAyah, setSaveAyah] = useState(false);
   const addAyat = useStore((state) => state.addAyat);
+  const [saveSurModalVisible, setSaveSurModalVisible] = useState(false)
+  const getFolders = useStore((state) => state.getFolder);
+  const folder = useStore((state) => state.folder);
 
+  // share
   const shareAyat = async () => {
     try {
       const message =
@@ -38,10 +43,13 @@ https://github.com/Xafizmac`;
     }
   }
 
+  // add
   const saveAyat = () => {
-    addAyat();
+    setSaveSurModalVisible(true);
+    // addAyat("Название");
   }
 
+  // delete
   const deleteAyat = async () => {
     try {
 
@@ -74,6 +82,35 @@ https://github.com/Xafizmac`;
         <Text style={styles.arabic}>{arabicText}</Text>
         {translation && <Text style={styles.rus}>{meaningText}</Text>}
       </View>
+
+      <BottomModal
+        // style={styles.bottomModal}
+        swipeDirection={["up", "down"]}
+        visible={saveSurModalVisible}
+        swipeThreshold={200}
+        modalTitle={
+          <View style={styles.bottomModal}>
+            <Text style={styles.modalTitle}>Настройки</Text>
+            <TouchableOpacity onPress={() => setSaveSurModalVisible(false)}>
+              <AntDesign name="close" size={28} color="white" />
+            </TouchableOpacity>
+          </View>
+        }
+        onTouchOutside={() => setSaveSurModalVisible(false)}
+      >
+        <ModalContent style={styles.modalContent}>
+          <View style={styles.modalContentView}>
+            {folder.map((item, index) => {
+              return (
+                <View style={styles.list} key={index}>
+                  <Text>{item.name}</Text>
+                  <Text>{item.ayat.length}</Text>
+                </View>
+              )
+            })}
+          </View>
+        </ModalContent>
+      </BottomModal>
     </View>
   );
 };
@@ -127,4 +164,31 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 10,
   },
+  bottomModal: {
+    width: "100%",
+    backgroundColor: "#5D2559",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 12,
+    paddingVertical: 12,
+  },
+  modalTitle: {
+    color: "white",
+    fontFamily: "Bold",
+    fontSize: 18,
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  modalContent: {
+    backgroundColor: "#5D2559",
+    height: 'auto',
+    width: "100%"
+  },
+  modalContentView: {
+    paddingVertical: 12,
+    flexDirection: "column",
+    gap: 16,
+  },
+  list: {},
 });

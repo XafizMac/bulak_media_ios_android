@@ -13,7 +13,7 @@ import { SavedNavigation } from "./saved_ayat_navigation";
 
 const Stack = createNativeStackNavigator();
 export const LayoutNavigate = () => {
-
+  
   const screenOptions = (name) => {
     return {
       headerTitle: name,
@@ -21,6 +21,7 @@ export const LayoutNavigate = () => {
       headerTitleStyle: { fontFamily: "Bold" },
       headerTintColor: "white",
       headerTitleAlign: "left",
+      headerBackTitleVisible: false,
     }
   }
 
@@ -56,7 +57,8 @@ export const LayoutNavigate = () => {
         component={TasbihatNavigation}
         name="Tasbihat"
         options={{
-          headerShown: false
+          headerShown: true,
+          headerBackTitleVisible: true
         }}
       />
       <Stack.Screen
@@ -75,6 +77,18 @@ export const LayoutNavigate = () => {
         component={Tafrijia}
         name="Tafrijia"
         options={screenOptions("ТАФРИЖИЯ")}
+      />
+      <Stack.Screen
+        name="saved"
+        component={SavedNavigation}
+        options={{
+          headerTitle: "Закладка",
+          headerStyle: { backgroundColor: "#2E0A30" },
+          headerTitleStyle: { fontFamily: "Bold" },
+          headerTintColor: "white",
+          headerTitleAlign: "left",
+          // headerBackTitleVisible: false
+        }}
       />
     </Stack.Navigator>
   );

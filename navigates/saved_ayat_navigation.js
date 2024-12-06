@@ -13,17 +13,17 @@ export const SavedNavigation = () => {
                 }}
                 name="savedhomepage"
                 component={SavedAyat}
-
             />
             <Stack.Screen
                 name="ayatfolder"
                 component={AyatFolder}
                 options={{
-                    headerTitle: "Saved",
+                    headerTitle: "Закладка",
                     headerStyle: { backgroundColor: "#2E0A30" },
                     headerTitleStyle: { fontFamily: "Bold" },
                     headerTintColor: "white",
                     headerTitleAlign: "left",
+                    headerBackTitleVisible: false,
                 }}
             />
         </Stack.Navigator>

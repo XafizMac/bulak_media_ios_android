@@ -46,6 +46,7 @@ const QuranSurs = ({ navigation, route }) => {
       ),
     });
   };
+
   const loadData = async () => {
     try {
       const response = await fetch(`https://equran.id/api/v2/surat/${id}`);
@@ -228,13 +229,16 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     backgroundColor: "#5D2559",
-    height: 250,
+    height: 'auto',
     paddingHorizontal: 12,
   },
   modalContentView: {
+    width: '100%',
+    height: '100%',
     paddingVertical: 12,
     flexDirection: "column",
     gap: 16,
+    backgroundColor: "#5D2559"
   },
   readMode: {
     paddingVertical: 10,

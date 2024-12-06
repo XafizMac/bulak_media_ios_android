@@ -2,12 +2,11 @@ import { create } from 'zustand';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const useStore = create((set) => ({
-  count: 0,
   folder: [
     { name: "Мои любимые", ayat: [] }
   ],
 
-  addFolder: async (name) => {
+  addFolder: async (name) => { 
     try {
       const currentFolders = await AsyncStorage.getItem("folder");
       const parsedFolders = JSON.parse(currentFolders) || folder;

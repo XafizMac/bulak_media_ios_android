@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useCallback, useState } from "react"
 import {
   View,
   Text,
@@ -6,6 +6,7 @@ import {
   Pressable,
   ActivityIndicator,
   FlatList,
+  ScrollView,
 } from "react-native"
 import dataOfSurah from "../../../data/surat.json"
 import QuranCard from "../../atoms/quran-card"
@@ -13,14 +14,50 @@ import AyahButton from "../../atoms/quranAyahBtn"
 import QuranInput from "../../atoms/quranInput"
 import { Feather } from "@expo/vector-icons"
 import { AntDesign } from "@expo/vector-icons"
+import { useFocusEffect, useNavigation } from "@react-navigation/native"
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
-const Quran = () => {
+
+const QuranPage = () => {
   const [originalData] = useState(dataOfSurah);
   const [data, setData] = useState(dataOfSurah);
   const [filterText, setFilteredText] = useState("");
   const [isInput, setIsInput] = useState(false);
+  const navigation = useNavigation();
 
-  const handleSwitch = () => setIsInput(!isInput);
+  useFocusEffect(
+    useCallback(() => {
+      navigation.setOptions({
+        headerTitle: "Курани Карим",
+        headerLargeTitle: true,
+        headerShown: true,
+        headerTintColor: "white",
+        cancelButtonText: "Отмена",
+        headerTitleStyle: {
+          fontSize: "20px",
+          fontFamily: "Bold"
+        },
+        headerLargeTitleStyle: {
+          color: "white"
+        },
+        headerStyle: {
+          backgroundColor: "#2E0A30",
+          color: "white"
+        },
+        heeaderStyle: {
+          height: "200px"
+        },
+        headerSearchBarOptions: {
+          placeholder: "Поиск",
+          textColor: "white",
+          headerIconColor: "white",
+          onChangeText: (event) => {
+            handleChangeText(event.nativeEvent.text);
+          }
+        },
+      })
+    }, [])
+  )
 
   const handleChangeText = (text) => {
     setFilteredText(text);
@@ -36,87 +73,67 @@ const Quran = () => {
   };
 
   return (
-    <View style={styles.main}>
-      <View style={styles.container}>
-        <View style={styles.header}>
-          {isInput ? (
-            <QuranInput handleChangeText={handleChangeText} />
-          ) : (
-            <Text style={styles.title}>Курани Карим</Text>
+    <ScrollView style={styles.scrollview}>
+      <View style={styles.main}>
+        <View style={styles.container}>
+          <View>
+            <QuranCard />
+          </View>
+          <View style={styles.tabContent}>
+            <View style={styles.tab}>
+              <Text style={styles.activeTab}>Суры</Text>
+              <Text style={styles.nonActiveTab}>На арабском</Text>
+            </View>
+            <View style={styles.line}>
+              <View style={styles.activeLine}></View>
+            </View>
+          </View>
+          {originalData && (
+            <View style={styles.surContainer}>
+              <FlatList
+                showsVerticalScrollIndicator={false}
+                data={data}
+                renderItem={({ item, index }) => (
+                  <AyahButton
+                    key={index}
+                    name={item.nama}
+                    nameLatin={item.namaLatin}
+                    index={item.nomor}
+                    place={item.tempatTurun}
+                    verses={item.jumlahAyat}
+                  />
+                )}
+              />
+            </View>
           )}
-          <Pressable onPress={handleSwitch}>
-            {isInput ? (
-              <AntDesign name="close" size={28} color="white" />
-            ) : (
-              <Feather name="search" size={28} color="white" />
-            )}
-          </Pressable>
         </View>
-        <View>
-          <QuranCard />
-        </View>
-        <View style={styles.tabContent}>
-          <View style={styles.tab}>
-            <Text style={styles.activeTab}>Суры</Text>
-            <Text style={styles.nonActiveTab}>На арабском</Text>
-          </View>
-          <View style={styles.line}>
-            <View style={styles.activeLine}></View>
-          </View>
-        </View>
-        {originalData ? (
-          <View style={styles.surContainer}>
-            <FlatList
-              style={styles.surContainerList}
-              showsVerticalScrollIndicator={false}
-              data={data}
-              renderItem={({ item, index }) => (
-                <AyahButton
-                  key={index}
-                  name={item.nama}
-                  nameLatin={item.namaLatin}
-                  index={item.nomor}
-                  place={item.tempatTurun}
-                  verses={item.jumlahAyat}
-                />
-              )
-              }
-            />
-          </View>
-        ) : (
-          <ActivityIndicator />
-        )}
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
-export default Quran;
+export default QuranPage;
 
 const styles = StyleSheet.create({
+  scrollview: {
+    backgroundColor: "#2E0A30",
+    width: "100%",
+    height: "50%",
+  },
   main: {
     flex: 1,
     backgroundColor: "#2E0A30",
+    width: '100%',
+    height: "50%",
   },
   container: {
     paddingHorizontal: 12,
     flexDirection: "column",
-    paddingBottom: 130,
   },
   title: {
     fontFamily: "Bold",
     color: "white",
     fontSize: 24,
-  },
-  header: {
-    marginTop: 60,
-    height: 70,
-    flexDirection: "row",
-    alignItems: "center",
-    width: "100%",
-    justifyContent: "space-between",
-    gap: 14,
-    paddingBottom: 20,
   },
   tabContent: {
     flexDirection: "column",
@@ -148,14 +165,9 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   surContainer: {
-    height: "70%",
-    marginBottom: "200px",
+    height: "100%",
+    paddingBottom: 120,
     overflow: "hidden",
-    paddingBottom: 200
-  },
-  surContainerList: {
-    overflow: "visible",
-    marginBottom: "200px",
   },
   notFoundText: {
     color: "white",

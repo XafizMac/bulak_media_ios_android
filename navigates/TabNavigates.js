@@ -5,8 +5,8 @@ import { Foundation } from "@expo/vector-icons";
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Home from "../components/pages/ramadan_homepage/Home";
-import Quran from "../components/pages/quran/Quran";
 import { SavedNavigation } from "./saved_ayat_navigation";
+import Quran from "./QuranNavigation";
 
 const Tab = createBottomTabNavigator();
 
@@ -15,7 +15,6 @@ const windowWidth = Dimensions.get("window").width;
 const screenOptions = {
   tabBarShowLabel: false,
   headerShown: false,
-  headerTransparent: true,
   tabBarStyle: {
     position: "absolute",
     left: (windowWidth - (windowWidth * 65 / 100)) / 3,
@@ -99,7 +98,6 @@ export default function TabNavigates() {
                 }
               >
                 <Text>
-                  {/* <Feather name="book-open" size={30} color={focused ? "#F2BB4A" : "white"} /> */}
                   <FontAwesome5 name="book-open" size={25} color={focused ? "#F2BB4A" : "white"} />
                 </Text>
               </View>

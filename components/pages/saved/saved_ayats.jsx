@@ -1,21 +1,25 @@
 import { useEffect, useState } from "react";
-import { ActivityIndicator, Button, FlatList, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
-import Feather from '@expo/vector-icons/Feather';
+import {
+    Pressable,
+    SafeAreaView,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from "react-native";
+import Feather from "@expo/vector-icons/Feather";
 import { useNavigation } from "@react-navigation/native";
-import { Modal } from "../../molecules/modals/Modal";
-import { PrimaryButton } from "../../atoms/buttons/primary/primary_button";
 import useStore from "../../../store/store";
-import AntDesign from '@expo/vector-icons/AntDesign';
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 export const SavedAyat = () => {
     const [loading, setLoading] = useState(true);
-    const [data, setData] = useState(null);
     const navigation = useNavigation();
-    const [modalVisible, setModalVisible] = useState(false);
-    const [text, setText] = useState(null);
-
-    const folder = useStore((state) => state.folder)
-    const addFolder = useStore((state) => state.addFolder)
+    const [text, setText] = useState("");
+    const folder = useStore((state) => state.folder);
+    const addFolder = useStore((state) => state.addFolder);
     const getFolder = useStore((state) => state.getFolder);
     const deleteFolder = useStore((state) => state.deleteFolder);
 
@@ -23,55 +27,81 @@ export const SavedAyat = () => {
         getFolder();
     }, [folder]);
 
-    const add = () => {
+    const handleAddFolder = () => {
         if (text) {
             addFolder(text);
             setText("");
+            // getFolder();
         } else {
-            return false
+            return false;
         }
-    }
+    };
 
-    const handleChange = (value) => {
-        setText(value);
-    }
+    const handleNavigateToSavedAyat = (name) => {
+        navigation.navigate("ayatfolder", { folderName: name });
+    };
 
     return (
         <View style={styles.main}>
             <SafeAreaView>
                 <View style={styles.container}>
                     <Text style={styles.pageTitle}>Закладка</Text>
-                    <Pressable onPress={() => setModalVisible(true)}>
-                        <View style={styles.addFolder}>
-                            <Feather name="folder-plus" size={28} color="#F2BB4A" />
-                            <TextInput onChange={handleChange} cursorColor={"#F2BB4A"} value={text} maxLength={100} style={{
+                    <View style={styles.addFolder}>
+                        <Feather name="folder-plus" size={28} color="#F2BB4A" />
+                        <TextInput
+                            onChangeText={setText}
+                            cursorColor={"#F2BB4A"}
+                            value={text}
+                            maxLength={100}
+                            style={{
                                 fontFamily: "Medium",
                                 color: "#F2BB4A",
                                 fontSize: 16,
                                 flexGrow: 1,
-                            }} placeholderTextColor="#F2BB4A" placeholder="Добавить новую закладку" />
-                            <TouchableOpacity onPress={add}>
-                                <AntDesign name="pluscircle" size={28} color="#F2BB4A" />
-                            </TouchableOpacity>
-                        </View>
-                    </Pressable>
+                            }}
+                            placeholderTextColor="#F2BB4A"
+                            placeholder="Добавить новую закладку"
+                        />
+                        <TouchableOpacity onPress={handleAddFolder}>
+                            <AntDesign name="pluscircle" size={28} color="#F2BB4A" />
+                        </TouchableOpacity>
+                    </View>
 
-                    <ScrollView style={{
-                        width: "100%",
-                        height: "100%",
-                    }}>
-                        <View style={{
-                            gap: 16
-                        }}>
+                    <ScrollView
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                        }}
+                    >
+                        <View
+                            style={{
+                                gap: 16,
+                            }}
+                        >
                             {folder.map((item, index) => {
                                 return (
-                                    <View key={index} style={{ display: 'flex', width: "100%", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
-                                        <TouchableOpacity style={{ width: "90%" }} key={index}>
+                                    <View
+                                        key={index}
+                                        style={{
+                                            display: "flex",
+                                            width: "100%",
+                                            flexDirection: "row",
+                                            justifyContent: "space-between",
+                                            alignItems: "center",
+                                        }}
+                                    >
+                                        <TouchableOpacity
+                                            onPress={() => handleNavigateToSavedAyat(item.name)}
+                                            style={{ width: "90%" }}
+                                            key={index}
+                                        >
                                             <View style={styles.folderLeftSide}>
                                                 <Feather name="folder" size={25} color="#F2BB4A" />
                                                 <View style={{ gap: 5 }}>
                                                     <Text style={styles.folderName}>{item.name}</Text>
-                                                    <Text style={styles.amountOfAyats}>{item?.ayat?.length} аятов</Text>
+                                                    <Text style={styles.amountOfAyats}>
+                                                        {item?.ayat?.length} аятов
+                                                    </Text>
                                                 </View>
                                             </View>
                                         </TouchableOpacity>
@@ -79,15 +109,15 @@ export const SavedAyat = () => {
                                             <Feather name="trash" size={24} color="#F2BB4A" />
                                         </TouchableOpacity>
                                     </View>
-                                )
+                                );
                             })}
                         </View>
                     </ScrollView>
                 </View>
             </SafeAreaView>
         </View>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
     main: {
@@ -98,7 +128,7 @@ const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 12,
         paddingTop: 20,
-        gap: 25
+        gap: 25,
     },
     pageTitle: {
         color: "white",
@@ -110,7 +140,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-between",
         width: "100%",
-        gap: 10
+        gap: 10,
     },
     modalContent: {
         flexDirection: "column",
@@ -118,22 +148,22 @@ const styles = StyleSheet.create({
         gap: 20,
         backgroundColor: "#461151",
         padding: 20,
-        borderRadius: 10
+        borderRadius: 10,
     },
     content: {
-        marginTop: 20
+        marginTop: 20,
     },
     input: {
         color: "white",
         fontFamily: "Medium",
         textAlign: "left",
-        borderBottomWidth: .5,
+        borderBottomWidth: 0.5,
         borderStyle: "solid",
         borderBottomColor: "#fff",
         paddingVertical: 10,
         fontSize: 16,
         width: "100%",
-        alignSelf: 'center'
+        alignSelf: "center",
     },
     folderLeftSide: {
         display: "flex",
@@ -144,10 +174,10 @@ const styles = StyleSheet.create({
     folderName: {
         color: "#fff",
         fontFamily: "Medium",
-        fontSize: 16
+        fontSize: 16,
     },
     amountOfAyats: {
         color: "#fff",
-        fontSize: 14
+        fontSize: 14,
     },
 });
