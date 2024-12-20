@@ -1,6 +1,7 @@
 {
   "cli": {
-    "version": ">= 7.5.0"
+    "version": ">= 14.2.0",
+    "appVersionSource": "remote"
   },
   "build": {
     "development": {
@@ -8,11 +9,22 @@
       "distribution": "internal"
     },
     "preview": {
+      "ios": {
+        "simulator": true
+      },
       "distribution": "internal"
     },
-    "production": {}
+    "production": {
+      "autoIncrement": true
+    }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "hafizfullstack@gmail.com",
+        "ascAppId": "6739448069",
+        "appleTeamId": "5LTMA86X9Q"
+      }
+    }
   }
 }

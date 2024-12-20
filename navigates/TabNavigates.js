@@ -27,7 +27,7 @@ const screenOptions = {
     paddingTop: 25,
     borderWidth: 0,
     borderTopColor: "rgba(70, 17, 81, 1)",
-    borderRadius: "100%",
+    borderRadius: 100,
     marginHorizontal: "5%",
     shadowColor: "black",
     shadowOffset: {

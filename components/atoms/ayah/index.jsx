@@ -11,6 +11,8 @@ import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import useStore from "../../../store/store";
 import { BottomModal, ModalContent } from "react-native-modals";
+import Entypo from '@expo/vector-icons/Entypo';
+import Checkbox from 'expo-checkbox';
 
 const Ayah = ({ arabicText, index, meaningText, translation, info }) => {
   const [saveAyah, setSaveAyah] = useState(false);
@@ -18,7 +20,12 @@ const Ayah = ({ arabicText, index, meaningText, translation, info }) => {
   const [saveSurModalVisible, setSaveSurModalVisible] = useState(false)
   const getFolders = useStore((state) => state.getFolder);
   const folder = useStore((state) => state.folder);
+  const [isChecked, setChecked] = useState(false);
+  
+  // play 
+  const playAyat = async () => {
 
+  }
   // share
   const shareAyat = async () => {
     try {
@@ -64,6 +71,9 @@ https://github.com/Xafizmac`;
           <Text style={styles.number}>{index + 1}</Text>
         </View>
         <View style={styles.specificIcons}>
+          <TouchableOpacity onPress={() => playAyat()}>
+            <Entypo name="controller-play" size={24} color="#F2BB4A" />
+          </TouchableOpacity>
           <TouchableOpacity onPress={() => shareAyat()}>
             <AntDesign name="sharealt" size={24} color="#F2BB4A" />
           </TouchableOpacity>
@@ -84,13 +94,12 @@ https://github.com/Xafizmac`;
       </View>
 
       <BottomModal
-        // style={styles.bottomModal}
         swipeDirection={["up", "down"]}
         visible={saveSurModalVisible}
         swipeThreshold={200}
         modalTitle={
           <View style={styles.bottomModal}>
-            <Text style={styles.modalTitle}>Настройки</Text>
+            <Text style={styles.modalTitle}>Сохранить</Text>
             <TouchableOpacity onPress={() => setSaveSurModalVisible(false)}>
               <AntDesign name="close" size={28} color="white" />
             </TouchableOpacity>
@@ -103,6 +112,12 @@ https://github.com/Xafizmac`;
             {folder.map((item, index) => {
               return (
                 <View style={styles.list} key={index}>
+                  <Checkbox
+                    value={isChecked}
+                    onValueChange={setChecked}
+                    color={isChecked ? '#F2BB4A' : undefined}
+                    disabled={false}
+                    style={styles.checkbox} />
                   <Text>{item.name}</Text>
                   <Text>{item.ayat.length}</Text>
                 </View>
@@ -182,7 +197,7 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     backgroundColor: "#5D2559",
-    height: 'auto',
+    // height: 'auto',
     width: "100%"
   },
   modalContentView: {
@@ -190,5 +205,16 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     gap: 16,
   },
-  list: {},
+  list: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 10,
+    alignItems: "center"
+  },
+  checkbox: {
+    width: 25,
+    height: 25,
+    borderRadius: "20%",
+    borderColor: "#F2BB4A"
+  },
 });

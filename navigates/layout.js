@@ -1,9 +1,7 @@
 import TabNavigates from "./TabNavigates";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import QuranSurs from "../components/pages/quranSurs";
-import MenuNavigate from "./MenuNavigate";
 import { Shahada } from "../components/pages/shahada/Shahada";
-import { Sur } from "../components/pages/sur/Sur";
 import SurNavigation from "./sur_navigator";
 import TasbihatNavigation from "./tasbihat_navigate";
 import Prayer from "../components/pages/dua/Prayer";
@@ -13,7 +11,7 @@ import { SavedNavigation } from "./saved_ayat_navigation";
 
 const Stack = createNativeStackNavigator();
 export const LayoutNavigate = () => {
-  
+
   const screenOptions = (name) => {
     return {
       headerTitle: name,

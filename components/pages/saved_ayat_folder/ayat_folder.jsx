@@ -1,40 +1,43 @@
 import { StyleSheet, Text, View } from "react-native";
 import useStore from "../../../store/store";
 import { useEffect, useState } from "react";
+import AyahButton from "../../atoms/quranAyahBtn";
 
 export const AyatFolder = ({ route }) => {
     const folder = useStore((state) => state.folder);
     const [currentFolder, setCurrentFolder] = useState([]);
     const { folderName } = route.params;
 
-    useEffect(() => {
+    const defineFolder = () => {
         const filteredFolder = folder.filter(
             (folder) => folder.name === folderName,
         );
         setCurrentFolder(filteredFolder);
-    }, [folder]);
+    }
+
+    useEffect(() => {
+        defineFolder();
+    }, []);
 
     return (
         <View style={styles.main}>
             <View style={styles.container}>
-                {currentFolder.map((item, index) => (
+                {currentFolder.length ? currentFolder.map((item, index) => (
                     <View key={index}>
                         <Text style={styles.name}>{item.name}</Text>
-                        <Text>Количество аятов: {item.ayat.length}</Text>
                         {item.ayat.map((ayat, index) => (
-                            <Text key={index}>{ayat}</Text>
+                            <AyahButton name={ayat} />
                         ))}
                     </View>
-                ))}
+                )) :
+                    <Text>
+                        Пустой
+                    </Text>
+                }
             </View>
         </View>
     );
 };
-
-// AyatFolder.sharedElements = (route) => {
-//   const { folderName } = route.params;
-//   return [{ id: `item.name` }];
-// };
 
 const styles = StyleSheet.create({
     main: {

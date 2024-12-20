@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "Bulak Media",
-    "slug": "bulakmedia",
+    "name": "Булак Медиа",
+    "slug": "tasbihat",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icons/icon.png",
+    "icon": "./assets/app/icon1.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/backgrouds/splash.jpg",
-      "resizeMode": "cover",
+      "image": "./assets/backgrouds/splash.png",
+      "resi`zeMode": "cover",
       "backgroundColor": "#2E0A30"
     },
     "assetBundlePatterns": [
@@ -40,9 +40,8 @@
         {
           "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
         }
-      ]
+      ],
+      "expo-font"
     ]
   }
 }
-
-

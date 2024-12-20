@@ -41,10 +41,9 @@ export default function HomeCard() {
 
 const styles = StyleSheet.create({
     scroll: {
-        overflow: "visible"
+        overflow: "visible",
     },
     cards: {
-        width: "100%",
         display: 'flex',
         flexDirection: 'row',
         gap: 12,

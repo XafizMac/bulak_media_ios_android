@@ -11,6 +11,7 @@ export default function App() {
     ArabicMedium: require("./assets/fonts/Arabic-Medium.ttf"),
   });
 
+  
   if (!fonts)
     return (
       <View style={styles.loadingPage}>

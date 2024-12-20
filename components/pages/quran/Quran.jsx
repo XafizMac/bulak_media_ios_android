@@ -3,26 +3,18 @@ import {
   View,
   Text,
   StyleSheet,
-  Pressable,
-  ActivityIndicator,
   FlatList,
   ScrollView,
 } from "react-native"
 import dataOfSurah from "../../../data/surat.json"
 import QuranCard from "../../atoms/quran-card"
 import AyahButton from "../../atoms/quranAyahBtn"
-import QuranInput from "../../atoms/quranInput"
-import { Feather } from "@expo/vector-icons"
-import { AntDesign } from "@expo/vector-icons"
 import { useFocusEffect, useNavigation } from "@react-navigation/native"
-import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
 
 const QuranPage = () => {
   const [originalData] = useState(dataOfSurah);
   const [data, setData] = useState(dataOfSurah);
-  const [filterText, setFilteredText] = useState("");
-  const [isInput, setIsInput] = useState(false);
   const navigation = useNavigation();
 
   useFocusEffect(
@@ -34,7 +26,7 @@ const QuranPage = () => {
         headerTintColor: "white",
         cancelButtonText: "Отмена",
         headerTitleStyle: {
-          fontSize: "20px",
+          fontSize: 20,
           fontFamily: "Bold"
         },
         headerLargeTitleStyle: {
@@ -45,7 +37,7 @@ const QuranPage = () => {
           color: "white"
         },
         heeaderStyle: {
-          height: "200px"
+          height: 200
         },
         headerSearchBarOptions: {
           placeholder: "Поиск",
@@ -60,7 +52,6 @@ const QuranPage = () => {
   )
 
   const handleChangeText = (text) => {
-    setFilteredText(text);
     filterData(text);
   };
 
@@ -123,7 +114,7 @@ const styles = StyleSheet.create({
   main: {
     flex: 1,
     backgroundColor: "#2E0A30",
-    width: '100%',
+    width: "100%",
     height: "50%",
   },
   container: {
@@ -168,12 +159,5 @@ const styles = StyleSheet.create({
     height: "100%",
     paddingBottom: 120,
     overflow: "hidden",
-  },
-  notFoundText: {
-    color: "white",
-    fontFamily: "Medium",
-    fontSize: 18,
-    textAlign: "center",
-    marginTop: 10,
-  },
+  }
 });

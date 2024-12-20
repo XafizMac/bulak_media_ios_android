@@ -16,7 +16,7 @@ import image from "../../../assets/img/bismillah.png";
 import Ayah from "../../atoms/ayah";
 import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
-import { ModalContent, BottomModal, ModalTitle } from "react-native-modals";
+import { ModalContent, BottomModal } from "react-native-modals";
 import QuranInput from "../../atoms/quranInput";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -26,7 +26,6 @@ const QuranSurs = ({ navigation, route }) => {
   const { id } = route.params;
   const [info, setInfo] = useState({});
   const [isModalOpen, setModalOpen] = useState(false);
-  const [isSearchInput, setSearchInput] = useState(false);
   const [readMode, setReadMode] = useState("list");
   const [translation, setTranslation] = useState(false);
 
@@ -69,11 +68,6 @@ const QuranSurs = ({ navigation, route }) => {
     <View style={styles.main}>
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          {isSearchInput && (
-            <View style={{ marginBottom: 22 }}>
-              <QuranInput handleChangeText={handleChangeText} />
-            </View>
-          )}
           <View style={{ overflow: "hidden", borderRadius: 20 }}>
             <ImageBackground
               style={styles.image}
@@ -234,7 +228,6 @@ const styles = StyleSheet.create({
   },
   modalContentView: {
     width: '100%',
-    height: '100%',
     paddingVertical: 12,
     flexDirection: "column",
     gap: 16,

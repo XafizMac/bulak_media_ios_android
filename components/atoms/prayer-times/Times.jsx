@@ -1,7 +1,6 @@
 import { View, Text, Image, StyleSheet, ActivityIndicator } from "react-native";
 import React, {
   useState,
-  useEffect,
   useCallback,
   useLayoutEffect,
 } from "react";
@@ -22,7 +21,6 @@ import ishaNoneActive from "../../../assets/icons/nonactive-isha.png";
 import moment from "moment";
 import PrayerTimes from "../../../api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { getTimeDifference } from "../../../utils/timeDifference";
 export default function Times() {
   const [loading, setLoading] = useState(true);
   const [todayTime, setTodayTime] = useState({});
@@ -63,7 +61,7 @@ export default function Times() {
       name: "Фаджр",
       hours: prayerItem?.Fajr.substr(0, 2),
       minutes: prayerItem?.Fajr.substr(3, 2),
-      active: false,
+      active: true,
       activeIcon: fajrActive,
       inactiveIcon: fajrNoneActive,
     },
@@ -71,7 +69,7 @@ export default function Times() {
       name: "Восход",
       hours: prayerItem?.Sunrise.substr(0, 2),
       minutes: prayerItem?.Sunrise.substr(3, 2),
-      active: false,
+      active: true,
       activeIcon: activeSunrise,
       inactiveIcon: sunriseNoneActive,
     },
@@ -79,7 +77,7 @@ export default function Times() {
       name: "Зухр",
       hours: prayerItem?.Dhuhr.substr(0, 2),
       minutes: prayerItem?.Dhuhr.substr(3, 2),
-      active: false,
+      active: true,
       activeIcon: zuhrActive,
       inactiveIcon: zuhrNoneActive,
     },
@@ -87,7 +85,7 @@ export default function Times() {
       name: "Аср",
       hours: prayerItem?.Asr.substr(0, 2),
       minutes: prayerItem?.Asr.substr(3, 2),
-      active: false,
+      active: true,
       activeIcon: asrActive,
       inactiveIcon: asrNoneActive,
     },
@@ -95,7 +93,7 @@ export default function Times() {
       name: "Магриб",
       hours: prayerItem?.Maghrib.substr(0, 2),
       minutes: prayerItem?.Maghrib.substr(3, 2),
-      active: false,
+      active: true,
       activeIcon: magribActive,
       inactiveIcon: magribNoneActive,
     },
@@ -103,7 +101,7 @@ export default function Times() {
       name: "Иша",
       hours: prayerItem?.Isha.substr(0, 2),
       minutes: prayerItem?.Isha.substr(3, 2),
-      active: false,
+      active: true,
       activeIcon: ishaActive,
       inactiveIcon: ishaNoneActive,
     },
