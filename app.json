@@ -4,11 +4,11 @@
     "slug": "tasbihat",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/app/icon1.png",
+    "icon": "./assets/app/icon3.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/backgrouds/splash.png",
-      "resi`zeMode": "cover",
+      "resizeMode": "cover",
       "backgroundColor": "#2E0A30"
     },
     "assetBundlePatterns": [
@@ -38,7 +38,7 @@
       [
         "expo-location",
         {
-          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+          "locationAlwaysAndWhenInUsePermission": "$(PRODUCT_NAME) uses your location to provide accurate prayer times based on your current region."
         }
       ],
       "expo-font"

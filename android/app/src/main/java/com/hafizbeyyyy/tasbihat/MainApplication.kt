@@ -1,4 +1,4 @@
-package com.bulakmedia
+package com.hafizbeyyyy.tasbihat
 
 import android.app.Application
 import android.content.res.Configuration
