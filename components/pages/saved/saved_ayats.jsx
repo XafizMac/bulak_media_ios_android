@@ -31,7 +31,6 @@ export const SavedAyat = () => {
         if (text) {
             addFolder(text);
             setText("");
-            // getFolder();
         } else {
             return false;
         }

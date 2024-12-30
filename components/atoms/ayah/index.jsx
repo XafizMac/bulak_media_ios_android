@@ -6,26 +6,30 @@ import {
   View,
   Share
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import useStore from "../../../store/store";
 import { BottomModal, ModalContent } from "react-native-modals";
-import Entypo from '@expo/vector-icons/Entypo';
-import Checkbox from 'expo-checkbox';
+import { Picker } from "@react-native-picker/picker"
+import Secondary from "../buttons/secondary/Secondary";
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
-const Ayah = ({ arabicText, index, meaningText, translation, info }) => {
+const Ayah = ({ arabicText, index, meaningText, translation, info, deleting, onDelete }) => {
   const [saveAyah, setSaveAyah] = useState(false);
   const addAyat = useStore((state) => state.addAyat);
   const [saveSurModalVisible, setSaveSurModalVisible] = useState(false)
   const getFolders = useStore((state) => state.getFolder);
   const folder = useStore((state) => state.folder);
-  const [isChecked, setChecked] = useState(false);
-  
+  const [selectedFolder, setSelectedFolder] = useState(null);
+
+
   // play 
   const playAyat = async () => {
 
   }
+
+
   // share
   const shareAyat = async () => {
     try {
@@ -49,19 +53,14 @@ https://github.com/Xafizmac`;
       console.log(err);
     }
   }
-
-  // add
-  const saveAyat = () => {
-    setSaveSurModalVisible(true);
-    // addAyat("Название");
-  }
-
-  // delete
-  const deleteAyat = async () => {
-    try {
-
+  // save
+  const saveAyatToStorage = () => {
+    if (selectedFolder !== null) {
+      addAyat(selectedFolder, { arabicText, index, meaningText, translation, info });
+      setSaveSurModalVisible(false);
+    } else {
+      return false;
     }
-    catch (e) { }
   }
 
   return (
@@ -71,20 +70,24 @@ https://github.com/Xafizmac`;
           <Text style={styles.number}>{index + 1}</Text>
         </View>
         <View style={styles.specificIcons}>
-          <TouchableOpacity onPress={() => playAyat()}>
+          {/* <TouchableOpacity onPress={() => playAyat()}>
             <Entypo name="controller-play" size={24} color="#F2BB4A" />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <TouchableOpacity onPress={() => shareAyat()}>
             <AntDesign name="sharealt" size={24} color="#F2BB4A" />
           </TouchableOpacity>
-          {!saveAyah ? (
-            <Pressable onPress={() => saveAyat()}>
+          {!deleting && (
+            <Pressable onPress={() => {
+              getFolders();
+              setSaveSurModalVisible(true);
+            }}>
               <MaterialIcons name="bookmark-border" size={28} color="#F2BB4A" />
             </Pressable>
-          ) : (
-            <Pressable onPress={deleteAyat}>
-              <MaterialIcons name="bookmark" size={28} color="#F2BB4A" />
-            </Pressable>
+          )}
+          {deleting && (
+            <TouchableOpacity onPress={onDelete} style={{marginLeft: 10}}>
+              <FontAwesome name="trash" size={28} color="#F2BB4A" />
+            </TouchableOpacity>
           )}
         </View>
       </View>
@@ -109,20 +112,22 @@ https://github.com/Xafizmac`;
       >
         <ModalContent style={styles.modalContent}>
           <View style={styles.modalContentView}>
-            {folder.map((item, index) => {
-              return (
-                <View style={styles.list} key={index}>
-                  <Checkbox
-                    value={isChecked}
-                    onValueChange={setChecked}
-                    color={isChecked ? '#F2BB4A' : undefined}
-                    disabled={false}
-                    style={styles.checkbox} />
-                  <Text>{item.name}</Text>
-                  <Text>{item.ayat.length}</Text>
-                </View>
-              )
-            })}
+            <Picker
+              itemStyle={{ color: "white" }}
+              style={styles.picker}
+              selectedValue={selectedFolder}
+              onValueChange={(itemValue) => {
+                setSelectedFolder(itemValue);
+                console.log(itemValue);
+              }
+              }>
+              {folder.map((item, index) => {
+                return (
+                  <Picker.Item style={{ color: "white" }} key={index} label={item.name} value={item.name} />
+                )
+              })}
+            </Picker>
+            <Secondary onPress={() => saveAyatToStorage()} title={"Сохранить"} />
           </View>
         </ModalContent>
       </BottomModal>
@@ -197,13 +202,11 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     backgroundColor: "#5D2559",
-    // height: 'auto',
     width: "100%"
   },
   modalContentView: {
     paddingVertical: 12,
     flexDirection: "column",
-    gap: 16,
   },
   list: {
     display: "flex",
@@ -211,10 +214,9 @@ const styles = StyleSheet.create({
     gap: 10,
     alignItems: "center"
   },
-  checkbox: {
-    width: 25,
-    height: 25,
-    borderRadius: "20%",
-    borderColor: "#F2BB4A"
+  picker: {
+    height: 200,
+    overflow: "hidden",
+    marginBottom: 20
   },
 });

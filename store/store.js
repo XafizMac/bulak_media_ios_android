@@ -3,10 +3,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const useStore = create((set) => ({
   folder: [
-    { name: "Мои любимые", ayat: [] }
+    { name: "Мои любимые", ayat: [{}] }
   ],
+  ayats: [],
 
-  addFolder: async (name) => { 
+  addFolder: async (name) => {
     try {
       const currentFolders = await AsyncStorage.getItem("folder");
       const parsedFolders = JSON.parse(currentFolders) || folder;
@@ -48,8 +49,24 @@ const useStore = create((set) => ({
     catch (e) { }
   },
 
-  addAyat: async (folderName, ayat) => {
+  addAyat: async (folderName, { arabicText, index, meaningText, translation, info }) => {
+    console.log(arabicText);
+    try {
+      const currentFolders = await AsyncStorage.getItem("folder");
+      const parsedFolders = JSON.parse(currentFolders) || [];
 
+
+      const updatedFolders = parsedFolders.map((folder) => {
+        if (folder.name === folderName) {
+          return { ...folder, ayat: [...folder.ayat, { arabicText, index, meaningText, translation, info }] };
+        }
+        return folder;
+      });
+
+      await AsyncStorage.setItem("folder", JSON.stringify(updatedFolders));
+      set({ folder: updatedFolders });
+    }
+    catch (e) { }
   },
   deleteAyat: async (folderName) => {
 

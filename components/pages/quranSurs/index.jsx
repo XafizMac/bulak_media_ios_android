@@ -20,18 +20,20 @@ import { ModalContent, BottomModal } from "react-native-modals";
 import QuranInput from "../../atoms/quranInput";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const QuranSurs = ({ navigation, route }) => {
   const [ayatList, setAyatList] = useState([]);
   const { id } = route.params;
   const [info, setInfo] = useState({});
   const [isModalOpen, setModalOpen] = useState(false);
-  const [readMode, setReadMode] = useState("list");
   const [translation, setTranslation] = useState(false);
 
+  const API_URL = `https://equran.id/api/v2/surat/${id}`;
+
   useEffect(() => {
-    loadData();
     setNavigationOptions();
+    loadData();
   }, [id]);
 
   const setNavigationOptions = () => {
@@ -48,14 +50,22 @@ const QuranSurs = ({ navigation, route }) => {
 
   const loadData = async () => {
     try {
-      const response = await fetch(`https://equran.id/api/v2/surat/${id}`);
-      const responseData = await response.json();
-      const ayatData = responseData.data.ayat;
-      const ayatInfo = responseData.data;
-      setInfo(ayatInfo);
-      setAyatList(ayatData);
+      const cachedData = await AsyncStorage.getItem(`${id}`);
+      if (cachedData) {
+        const parsedData = JSON.parse(cachedData);
+        setInfo(parsedData.data);
+        setAyatList(parsedData.data.ayat);
+      } else {
+        const response = await fetch(API_URL);
+        const responseData = await response.json();
+        const ayatData = responseData.data.ayat;
+        const ayatInfo = responseData.data;
+        setInfo(ayatInfo);
+        setAyatList(ayatData);
+        await AsyncStorage.setItem(`${id}`, JSON.stringify(responseData));
+      }
     } catch (e) {
-      console.log("Error loading surah", e);
+      console.log("Ошибка загрузки данных:", e);
     }
   };
 
@@ -104,6 +114,7 @@ const QuranSurs = ({ navigation, route }) => {
                       info={info}
                       arabicText={ayah.teksArab}
                       meaningText={ayah.teksIndonesia}
+                      deleting={false}
                     />
                   );
                 })}
@@ -132,25 +143,6 @@ const QuranSurs = ({ navigation, route }) => {
         >
           <ModalContent style={styles.modalContent}>
             <View style={styles.modalContentView}>
-              <View style={styles.readMode}>
-                <Text style={styles.title}>Режим чтения</Text>
-                <View style={styles.readModeButtons}>
-                  <Pressable onPress={() => setReadMode("book")}>
-                    <Feather
-                      name="book"
-                      size={30}
-                      color={readMode == "book" ? "#F2BB4A" : "white"}
-                    />
-                  </Pressable>
-                  <Pressable onPress={() => setReadMode("list")}>
-                    <FontAwesome5
-                      name="list-ol"
-                      size={30}
-                      color={readMode == "list" ? "#F2BB4A" : "white"}
-                    />
-                  </Pressable>
-                </View>
-              </View>
               <View style={styles.translation}>
                 <Text style={styles.title}>Перевод</Text>
                 <Switch

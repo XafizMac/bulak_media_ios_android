@@ -29,7 +29,7 @@ export const LayoutNavigate = () => {
         component={TabNavigates}
         name="Home"
         options={{
-          headerShown: false,
+          headerShown: false, 
         }}
       />
       <Stack.Screen
