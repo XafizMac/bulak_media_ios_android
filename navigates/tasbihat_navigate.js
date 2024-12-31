@@ -28,6 +28,7 @@ export default function TasbihatNavigation() {
                     headerTitleStyle: { fontFamily: "Bold" },
                     headerTintColor: "white",
                     headerTitleAlign: "left",
+                    // headerShown: false
                 }}
             />
             {screens.map((item, index) => (
@@ -37,6 +38,7 @@ export default function TasbihatNavigation() {
                     title={item.title}
                     component={item.component}
                     options={{
+                        presentation: "modal",
                         headerTitle: item.title,
                         headerStyle: { backgroundColor: "#2E0A30" },
                         headerTitleStyle: { fontFamily: "Bold" },

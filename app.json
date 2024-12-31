@@ -2,7 +2,7 @@
   "expo": {
     "name": "Булак Медиа",
     "slug": "tasbihat",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/app/icon3.png",
     "userInterfaceStyle": "light",
@@ -24,7 +24,13 @@
         "foregroundImage": "./assets/icons/adaptive-icon.png",
         "backgroundColor": "#2E0A30"
       },
-      "package": "com.hafizbeyyyy.tasbihat"
+      "package": "com.hafizbeyyyy.tasbihat",
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -43,6 +49,10 @@
         }
       ],
       "expo-font"
-    ]
+    ],
+    "runtimeVersion": "1.0.1",
+    "updates": {
+      "url": "https://u.expo.dev/4a52fd8d-fd2c-4fcb-af48-b90577e9eaa6"
+    }
   }
 }

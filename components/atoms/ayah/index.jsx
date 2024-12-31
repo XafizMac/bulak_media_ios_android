@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: "100%",
+    borderRadius: 100,
   },
   number: {
     color: "white",

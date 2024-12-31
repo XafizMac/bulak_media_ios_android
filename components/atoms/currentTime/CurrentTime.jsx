@@ -9,10 +9,8 @@ import Mosque from "../../../assets/backgrouds/bgmosque.png";
 
 export default function CurrentTime() {
   const { loadTimes } = PrayerTimes();
-  const [time, setTime] = useState([]);
-  const [todayTime, setTodayTime] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [difference, setDifference] = useState();
+  const [prayerTimes, setPrayerTimes] = useState(null);
+  const [currentPrayer, setCurrentPrayer] = useState('');
 
   useEffect(() => {
     async function checkStorage() {

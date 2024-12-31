@@ -113,7 +113,7 @@ export default function SoundArea({ audioTrack }) {
           <View style={styles.playArea}>
             <Pressable onPress={isPlaying ? stopSound : playSound}>
               <View style={{width: 60, height: 60, alignItems: "center", justifyContent: "center"}}>
-                <Ionicons name={isPlaying ? "ios-pause" : "ios-play"} size={40} color="#fff" />
+                <Ionicons name={isPlaying ? "pause" : "play"} size={40} color="#fff" />
               </View>
             </Pressable>
             <View style={styles.sliderMinutes}>

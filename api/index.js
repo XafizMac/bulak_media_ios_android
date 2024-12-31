@@ -8,7 +8,7 @@ function PrayerTimes() {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
 
-  useEffect(() => { 
+  useEffect(() => {
     loadTimes();
   }, [location]);
 
@@ -32,7 +32,7 @@ export default PrayerTimes;
 
 
 
-/* 
+/*
 
 (✔️) 1. Get permission from User(expo-location)
 (✔️) 2. Get location (long, lat)

@@ -7,6 +7,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Home from "../components/pages/ramadan_homepage/Home";
 import { SavedNavigation } from "./saved_ayat_navigation";
 import Quran from "./QuranNavigation";
+import SplashScreen from "../components/pages/splash_animation";
 
 const Tab = createBottomTabNavigator();
 

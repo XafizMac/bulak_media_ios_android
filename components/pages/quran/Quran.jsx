@@ -7,7 +7,7 @@ import {
   ScrollView,
 } from "react-native"
 import dataOfSurah from "../../../data/surat.json"
-import QuranCard from "../../atoms/quran-card"
+import QuranCard from "../../atoms/card/quran-card"
 import AyahButton from "../../atoms/quranAyahBtn"
 import { useFocusEffect, useNavigation } from "@react-navigation/native"
 

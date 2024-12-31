@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
 import React from "react";
-import background from "../../../assets/img/quran1.jpg";
+import background from "../../../../assets/img/quran1.jpg";
 import { FontAwesome5 } from "@expo/vector-icons";
 const QuranCard = () => {
   return (
