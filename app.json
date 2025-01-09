@@ -2,11 +2,12 @@
   "expo": {
     "name": "Булак Медиа",
     "slug": "tasbihat",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/app/icon3.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
+    "jsEngine": "jsc",
     "splash": {
       "image": "./assets/backgrouds/splash.png",
       "resizeMode": "cover",
@@ -50,7 +51,7 @@
       ],
       "expo-font"
     ],
-    "runtimeVersion": "1.0.1",
+    "runtimeVersion": "1.0.3",
     "updates": {
       "url": "https://u.expo.dev/4a52fd8d-fd2c-4fcb-af48-b90577e9eaa6"
     }

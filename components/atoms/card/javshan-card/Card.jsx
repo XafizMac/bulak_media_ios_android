@@ -47,10 +47,14 @@ export default function Card() {
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 10,
     height: "99%",
   },
   flatList: {
+    margin: 'auto',
+    width: "100%",
     marginTop: 5,
+    borderRadius: 15
   },
   notFoundText: {
     color: "white",

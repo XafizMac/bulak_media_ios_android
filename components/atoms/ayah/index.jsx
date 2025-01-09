@@ -24,7 +24,7 @@ const Ayah = ({ arabicText, index, meaningText, translation, info, deleting, onD
   const [selectedFolder, setSelectedFolder] = useState(null);
 
 
-  // play 
+  // play
   const playAyat = async () => {
 
   }
@@ -39,10 +39,8 @@ const Ayah = ({ arabicText, index, meaningText, translation, info, deleting, onD
 
 ${arabicText}
 
-${meaningText}
-
 Скачать приложение Булак Медиа👇
-https://github.com/Xafizmac`;
+https://apps.apple.com/kg/app/id6739448069`;
 
       const shareOptions = {
         message,
@@ -85,7 +83,7 @@ https://github.com/Xafizmac`;
             </Pressable>
           )}
           {deleting && (
-            <TouchableOpacity onPress={onDelete} style={{marginLeft: 10}}>
+            <TouchableOpacity onPress={onDelete} style={{ marginLeft: 10 }}>
               <FontAwesome name="trash" size={28} color="#F2BB4A" />
             </TouchableOpacity>
           )}

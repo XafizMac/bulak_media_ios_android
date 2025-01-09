@@ -38,7 +38,6 @@ export default function Times() {
         setTime(parsedTimes);
         findTodayTimes(parsedTimes);
         setLoading(false);
-        defineCurrentPrayerTime();
       }
     }
     setTimeout(checkStorage, 1000);
@@ -106,21 +105,6 @@ export default function Times() {
       inactiveIcon: ishaNoneActive,
     },
   ];
-
-  const defineCurrentPrayerTime = () => {
-    const currentHour = moment().hour();
-    const currentMinute = moment().minute();
-
-    const currentPrayer = dataOfTimes.forEach((prayer, index) => 
-      prayer
-    );
-    if (currentPrayer) {
-      currentPrayer.active = true;
-      console.log(currentPrayer);
-    } else {
-      console.log("Нет такого тайма");
-    }
-  }
 
   return (
     <View style={styles.block}>

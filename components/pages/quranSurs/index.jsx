@@ -37,15 +37,15 @@ const QuranSurs = ({ navigation, route }) => {
   }, [id]);
 
   const setNavigationOptions = () => {
-    navigation.setOptions({
-      headerRight: () => (
-        <View style={{ flexDirection: "row", gap: 15, alignItems: "center" }}>
-          <TouchableOpacity onPress={handleShowOptions}>
-            <Ionicons name="ellipsis-vertical" size={24} color="white" />
-          </TouchableOpacity>
-        </View>
-      ),
-    });
+    // navigation.setOptions({
+    //   headerRight: () => (
+    //     <View style={{ flexDirection: "row", gap: 15, alignItems: "center" }}>
+    //       <TouchableOpacity onPress={handleShowOptions}>
+    //         <Ionicons name="ellipsis-vertical" size={24} color="white" />
+    //       </TouchableOpacity>
+    //     </View>
+    //   ),
+    // });
   };
 
   const loadData = async () => {

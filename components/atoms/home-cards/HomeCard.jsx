@@ -11,7 +11,7 @@ export default function HomeCard() {
         { title: 'Молитвы', url: "Prayer", img: require("../../../assets/img/Dua.png") },
         { title: 'Жавшан', url: "Javshan", img: require("../../../assets/img/Javshan.png") },
         { title: 'Тафрижия', url: "Tafrijia", img: require("../../../assets/img/Tafrijia.png") },
-    ] 
+    ]
 
     const handlePress = (url) => {
         navigation.navigate(url);

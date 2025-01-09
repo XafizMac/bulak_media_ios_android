@@ -93,7 +93,7 @@ export const Sur = () => {
               return (
                 <SurButton
                   key={index}
-                  title={lang === "ru" ? item.titleRus : item.titleKg}
+                  title={item.titleRus}
                   number={item.number}
                   name={item.name}
                 />

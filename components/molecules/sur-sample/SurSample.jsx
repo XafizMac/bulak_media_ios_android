@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   surTitle: {
     fontSize: 22,
     textAlign: 'center',
-    color: 'yellow',
+    color: '#F2BB4A',
     fontFamily: 'Bold',
   },
   surArabic: {
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     fontFamily: 'ArabicMedium',
   },
   text: {
-    color: 'yellow',
+    color: '#F2BB4A',
     fontSize: 18,
     fontFamily: 'Bold',
   },

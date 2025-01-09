@@ -1,8 +1,13 @@
-import { View, StatusBar, ActivityIndicator, StyleSheet } from "react-native";
+import { View, StatusBar, ActivityIndicator, StyleSheet, Platform } from "react-native";
 import { useFonts } from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
 import { ModalPortal } from "react-native-modals";
 import { LayoutNavigate } from "./navigates/layout";
+import { initializeNotifications } from "./lib/notification";
+
+initializeNotifications();
+
+const OS = Platform.OS;
 
 export default function App() {
   const [fonts] = useFonts({
@@ -11,7 +16,7 @@ export default function App() {
     ArabicMedium: require("./assets/fonts/Arabic-Medium.ttf"),
   });
 
-  
+
   if (!fonts)
     return (
       <View style={styles.loadingPage}>
@@ -22,7 +27,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <View style={styles.App}>
-        <StatusBar barStyle="light-content" />
+        <StatusBar backgroundColor={"transparent"} translucent barStyle="light-content" />
         <LayoutNavigate />
         <ModalPortal />
       </View>
@@ -35,6 +40,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     backgroundColor: "#2E0A30",
+    paddingTop: OS === "android" && 30,
   },
   container: {
     padding: 12,

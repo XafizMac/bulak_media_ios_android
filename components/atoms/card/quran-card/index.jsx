@@ -1,7 +1,9 @@
-import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
+import { StyleSheet, Text, View, ImageBackground, Platform } from "react-native";
 import React from "react";
 import background from "../../../../assets/img/quran1.jpg";
 import { FontAwesome5 } from "@expo/vector-icons";
+
+const OS = Platform.OS;
 const QuranCard = () => {
   return (
     <View style={styles.main}>
@@ -32,8 +34,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     width: "100%",
     overflow: "hidden",
-    backgroundColor: "red",
-    marginTop: 210
+    marginTop: OS === "ios" ? 210 : 20
   },
   card: {
     height: 150,

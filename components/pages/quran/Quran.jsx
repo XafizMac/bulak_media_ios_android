@@ -34,12 +34,12 @@ const QuranPage = () => {
         },
         headerStyle: {
           backgroundColor: "#2E0A30",
-          color: "white"
+          color: "white",
+          height: 100,
         },
-        heeaderStyle: {
-          height: 200
-        },
+    
         headerSearchBarOptions: {
+          color: "white",
           placeholder: "Поиск",
           textColor: "white",
           headerIconColor: "white",

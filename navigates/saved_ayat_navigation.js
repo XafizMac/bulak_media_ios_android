@@ -22,7 +22,7 @@ export const SavedNavigation = () => {
                     headerStyle: { backgroundColor: "#2E0A30" },
                     headerTitleStyle: { fontFamily: "Bold" },
                     headerTintColor: "white",
-                    headerTitleAlign: "left",
+                    headerTitleAlign: "center",
                     headerBackTitleVisible: false,
                 }}
             />

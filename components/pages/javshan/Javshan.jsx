@@ -3,6 +3,7 @@ import { View, StyleSheet } from "react-native";
 import Card from "../../atoms/card/javshan-card/Card";
 
 export const Javshan = () => {
+
   return (
     <View style={styles.main}>
       <View style={styles.container}>

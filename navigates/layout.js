@@ -8,8 +8,11 @@ import Prayer from "../components/pages/dua/Prayer";
 import JavshanNavigation from "./javshan_navigate";
 import Tafrijia from "../components/pages/tafrijia/Tafrijia";
 import {SavedNavigation} from "./saved_ayat_navigation";
+import Help from "../components/pages/help";
+import { Platform } from "react-native";
 
 const Stack = createNativeStackNavigator();
+const  OS = Platform.OS;
 export const LayoutNavigate = () => {
 
     const screenOptions = (name) => {
@@ -18,7 +21,7 @@ export const LayoutNavigate = () => {
             headerStyle: {backgroundColor: "#2E0A30"},
             headerTitleStyle: {fontFamily: "Bold"},
             headerTintColor: "white",
-            headerTitleAlign: "left",
+            headerTitleAlign: "center",
             headerBackTitleVisible: false,
         }
     }
@@ -56,7 +59,6 @@ export const LayoutNavigate = () => {
                 name="Tasbihat"
                 options={{
                     headerShown: false,
-                    headerBackTitleVisible: true
                 }}
             />
             <Stack.Screen
@@ -68,7 +70,7 @@ export const LayoutNavigate = () => {
                 component={JavshanNavigation}
                 name="Javshan"
                 options={{
-                    headerShown: false
+                    headerShown: false,
                 }}
             />
             <Stack.Screen
@@ -84,8 +86,20 @@ export const LayoutNavigate = () => {
                     headerStyle: {backgroundColor: "#2E0A30"},
                     headerTitleStyle: {fontFamily: "Bold"},
                     headerTintColor: "white",
-                    headerTitleAlign: "left",
-                    // headerBackTitleVisible: false
+                    headerTitleAlign: "center",
+                }}
+            />
+            <Stack.Screen
+                name="help"
+                component={Help}
+                options={{
+                    headerTitle: "Вопросы",
+                    headerShown: OS === "ios" ? false : true,
+                    presentation: 'modal',
+                    headerStyle: {backgroundColor: "#2E0A30"},
+                    headerTitleStyle: {fontFamily: "Bold"},
+                    headerTintColor: "white",
+                    headerTitleAlign: "center",
                 }}
             />
         </Stack.Navigator>

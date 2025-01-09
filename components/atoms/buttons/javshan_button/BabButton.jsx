@@ -12,8 +12,10 @@ export default function BabButton({ num, number, setNumber }) {
 
   return (
     <Pressable onPress={handleClick}>
-      <View style={styles.button}>
-        <Text style={styles.text}>{num}-бап</Text>
+      <View style={[styles.button, {
+        marginHorizontal: num % 2 == 0 ? 16 : 0,
+      }]}>
+        <Text style={styles.text}>{num}-страница</Text>
       </View>
     </Pressable>
   );
@@ -25,9 +27,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 14,
     borderRadius: 10,
-    width: Dimensions.get("window").width / 2.3,
+    width: Dimensions.get("screen").width / 2 - 20,
     position: "relative",
-    marginHorizontal: 7,
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",

@@ -5,9 +5,15 @@ import { Zuhr } from "../components/pages/zuhr/Zuhr"
 import { Asr } from "../components/pages/asr/Asr"
 import { Magrib } from "../components/pages/magrib/Magrib"
 import { Isha } from "../components/pages/isha/Isha"
+import { Platform, Pressable, Text, TouchableOpacity } from "react-native"
+import { useNavigation } from "@react-navigation/native"
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const Stack = createNativeStackNavigator()
+const OS = Platform.OS;
 export default function TasbihatNavigation() {
+
+    const navigation = useNavigation();
 
     const screens = [
         { name: "Fajr", title: "ФАДЖР", component: Fajr },
@@ -27,8 +33,13 @@ export default function TasbihatNavigation() {
                     headerStyle: { backgroundColor: "#2E0A30" },
                     headerTitleStyle: { fontFamily: "Bold" },
                     headerTintColor: "white",
-                    headerTitleAlign: "left",
-                    // headerShown: false
+                    headerTitleAlign: "center",
+                    headerBackTitleVisible: true,
+                    headerLeft: () => (
+                        <TouchableOpacity onPress={() => navigation.goBack()}>
+                            <Ionicons name="chevron-back-outline" style={{ marginLeft: -14}} size={30} color="white" />
+                        </TouchableOpacity>
+                    )
                 }}
             />
             {screens.map((item, index) => (
@@ -38,12 +49,12 @@ export default function TasbihatNavigation() {
                     title={item.title}
                     component={item.component}
                     options={{
-                        presentation: "modal",
+                        presentation: OS === "ios" ? "modal" : "transparentModal",
                         headerTitle: item.title,
                         headerStyle: { backgroundColor: "#2E0A30" },
                         headerTitleStyle: { fontFamily: "Bold" },
                         headerTintColor: "white",
-                        headerTitleAlign: "left",
+                        headerTitleAlign: "center",
                     }}
                 />
             ))}
